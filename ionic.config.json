@@ -1,0 +1,8 @@
+{
+  "name": "guardian-angel",
+  "app_id": "01e2a418",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
