@@ -1,0 +1,38 @@
+<!--
+	File: text-select.html
+	created: 02/08/18 by Brendan Thompson
+	Updated: 02/08/18 by Brendan Thompson
+
+	Summary: Page for selecting the text that will go with the image that will get sent
+-->
+
+<ion-header>
+    <ion-navbar>
+        <ion-title>Guardian Angel</ion-title>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+    <h2>Pick Your Text</h2>
+
+    <!-- Spinner for while Loading Data -->
+    <ion-spinner name="circles" *ngIf="textList == 0"></ion-spinner>
+
+   	<!-- Main Picture Display -->
+   	<h4>The Guardian Angel:</h4>
+   	<ion-card class="main-display">
+   		<ion-card-content>
+	   		<p *ngIf="currentText != 0">{{ currentText.text }}</p>
+	   		<img *ngIf="selectedPicture != 0" [attr.src]="selectedPicture.href">
+	   	</ion-card-content>
+	</ion-card>
+
+	<!-- Text Select -->
+   	<p>Select a Text:</p>
+	<ion-list>
+		<ion-item *ngFor="let text of textList" (click)="selectText(text)">{{ text.text }}</ion-item>
+	</ion-list>
+
+    <button ion-button block type="submit" (click)="(submitSelection())">Submit</button>
+</ion-content>
