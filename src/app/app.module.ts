@@ -7,6 +7,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 // My Imports
 import { HttpModule } from '@angular/http';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 // Pages
 import { HomePage } from '../pages/home/home';
@@ -50,6 +51,7 @@ import { RecipientListProvider } from '../providers/recipient-list/recipient-lis
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+    SocialSharing,
     PictureListProvider,
     TextListProvider,
     RecipientListProvider
