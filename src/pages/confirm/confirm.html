@@ -18,12 +18,11 @@
    	<!-- Main Picture Display -->
    	<h4>The Guardian Angel:</h4>
    	<ion-card class="main-display">
-   		<ion-card-content>
-	   		<p *ngIf="selectedRecipient != 0">{{ selectedRecipient.name }}</p>
-	   		<p *ngIf="selectedText != 0">{{ selectedText.text }}</p>
-	   		<img *ngIf="selectedPicture != 0" [attr.src]="selectedPicture.href">
-	   	</ion-card-content>
+   		<img [attr.src]="finalImage">
 	</ion-card>
+
+	<!-- Canvas where the image is drawn -->
+	<canvas #myCanvas style="display: none;"></canvas>
 
     <button ion-button block type="submit" (click)="(confirmSelection())">Send Guardian Angel</button>
 
