@@ -14,7 +14,6 @@ import { NavController, NavParams } from 'ionic-angular';
 import { ElementRef, ViewChild } from '@angular/core';
 
 // Pages
-// import { ReceiverSelectPage } from '../receiver-select/receiver-select';
 import { ConfirmPage } from '../confirm/confirm';
 
 // Providers

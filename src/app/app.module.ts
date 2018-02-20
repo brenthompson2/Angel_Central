@@ -13,14 +13,12 @@ import { SocialSharing } from '@ionic-native/social-sharing';
 import { HomePage } from '../pages/home/home';
 import { PicSelectPage } from '../pages/pic-select/pic-select';
 import { TextSelectPage } from '../pages/text-select/text-select';
-import { ReceiverSelectPage } from '../pages/receiver-select/receiver-select';
 import { ConfirmPage } from '../pages/confirm/confirm';
 import { FinalPage } from '../pages/final/final';
 
 // Providers
 import { PictureListProvider } from '../providers/picture-list/picture-list';
 import { TextListProvider } from '../providers/text-list/text-list';
-import { RecipientListProvider } from '../providers/recipient-list/recipient-list';
 
 @NgModule({
   declarations: [
@@ -28,7 +26,6 @@ import { RecipientListProvider } from '../providers/recipient-list/recipient-lis
     HomePage,
     PicSelectPage,
     TextSelectPage,
-    ReceiverSelectPage,
     ConfirmPage,
     FinalPage
   ],
@@ -43,7 +40,6 @@ import { RecipientListProvider } from '../providers/recipient-list/recipient-lis
     HomePage,
     PicSelectPage,
     TextSelectPage,
-    ReceiverSelectPage,
     ConfirmPage,
     FinalPage
   ],
@@ -53,8 +49,7 @@ import { RecipientListProvider } from '../providers/recipient-list/recipient-lis
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     SocialSharing,
     PictureListProvider,
-    TextListProvider,
-    RecipientListProvider
+    TextListProvider
   ]
 })
 export class AppModule {}

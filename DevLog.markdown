@@ -12,13 +12,13 @@
 ### Summary:
 	- Implemented Image Flattening
 	- Simplified Data Model
+	- Removed Recipient-Select Page & Provider
 
 ### Need to Implement:
 Functionality:
 
 	- Get Images from Firebase
 	- Get Texts from Firebase
-	- Figure out using Image when sharing
 
 Design:
 
