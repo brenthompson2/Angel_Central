@@ -5,6 +5,111 @@
 
 ==================================================================================
 
+## **==================================================**
+## **====== 02/20/18 = Brendan Thompson ======**
+## **==================================================**
+
+### Summary:
+	- Implemented Image Flattening
+	- Simplified Data Model
+
+### Need to Implement:
+Functionality:
+
+	- Get Images from Firebase
+	- Get Texts from Firebase
+	- Figure out using Image when sharing
+
+Design:
+
+	- Currently isn't one
+
+BackEnd:
+
+	- Firebase?
+
+### Log of activity
+
+##### Implemented Image Flattening
+
+- Flattened the image in new blank project (flattenTest)
+- Implemented that code in Confirm page
+- Moved the Canvas to pic-select & text-select pages and only pass the img to Confirm & Final pages
+
+1) Import ElementRef & ViewChild for accessing the Canvas
+
+	import { ElementRef, ViewChild } from '@angular/core';
+
+2) Add ElementRef to constructor
+
+	private elementReference: ElementRef
+
+3) Access the Canvas & create member variables
+
+    @ViewChild('myCanvas') canvasEl: ElementRef;
+    private theCanvas: any;
+    private theContext: any;
+    private finalImage: any;
+
+4) Call the initialization from ionViewDidLoad()
+
+    ionViewDidLoad(){
+        this.initialiseCanvas();
+    }
+
+5) Initialize the Canvas
+
+    initialiseCanvas(){
+        this.theCanvas = this.canvasEl.nativeElement;
+        this.theCanvas.width = window.innerWidth;
+        this.theCanvas.height = window.innerHeight;
+        if(this.theCanvas.getContext){
+            this.theContext = this.theCanvas.getContext('2d');
+            this.drawTheImage();
+        }
+    }
+
+6) Draw the Image
+
+    drawTheImage(){
+        // Display the Image
+        var img = new Image();
+        img.setAttribute('crossOrigin', 'anonymous');
+        img.onload = (event) => {
+            this.theContext.drawImage(img, this.theCanvas.width/2 - img.width/2, this.theCanvas.height/2 - img.height/2);
+            this.drawText();
+        };
+        img.src=this.selectedPicture;
+    }
+
+7) Draw the Text
+
+    drawText(){
+        this.theContext.strokeStyle = "rgba(256, 0, 0, 1.0)";
+        this.theContext.font = "50px Arial";
+        this.theContext.textAlign = "center";
+        this.theContext.strokeText(this.selectedText.text, this.theCanvas.width/2, this.theCanvas.height/2);
+        this.saveCanvas();
+    }
+
+8) Set the finalImage given the Canvas
+
+    saveCanvas(){
+        this.finalImage = this.theCanvas.toDataURL();
+    }
+
+##### Simplified Data Model
+
+- Moved the Canvas to pic-select & text-select pages and only pass the img to Confirm & Final pages
+
+## **==================================================**
+## **====== 02/18/18 = Brendan Thompson ======**
+## **==================================================**
+
+### Summary:
+	- Learned how to use the Canvas
+	- Learned how to draw the Image & Text centered on the canvas
+	- See canvas-tutorial directory
 
 ## **==================================================**
 ## **====== 02/13/18 = Brendan Thompson ======**

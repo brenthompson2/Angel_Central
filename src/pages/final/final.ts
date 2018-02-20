@@ -1,7 +1,7 @@
 /*
 	File: final.ts
 	Updated: 02/08/18 by Brendan Thompson
-	Updated: 02/08/18 by Brendan Thompson
+  Updated: 02/20/18 by Brendan Thompson
 
 	Summary: Final page after sending Guardian Angel
 */
@@ -21,19 +21,18 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class FinalPage {
 
-	selectedPicture: any = 0;
-	selectedText: any = 0;
-	selectedRecipient: any = 0;
+    // =========================================
+    // Member Vars
+    // =========================================
+    private finalImage: any;
 
-  	constructor(public navCtrl: NavController, public navParams: NavParams) {
+  	constructor(public navCtrl: NavController,
+                public navParams: NavParams) {
 
-  		this.selectedPicture = this.navParams.get('selectedPicture');
-  		this.selectedText = this.navParams.get('selectedText');
-  		this.selectedRecipient = this.navParams.get('selectedRecipient');
+  		  this.finalImage = this.navParams.get('guardianAngel');
   	}
 
   	returnHome(){
       this.navCtrl.popToRoot();
     }
-
 }

@@ -11,7 +11,6 @@ import { NavController, NavParams } from 'ionic-angular';
 
 // My Imports
 import { SocialSharing } from '@ionic-native/social-sharing';
-import { ElementRef, ViewChild } from '@angular/core';
 
 // Pages
 import { FinalPage } from '../final/final';
@@ -27,17 +26,7 @@ export class ConfirmPage {
     // =========================================
     // Member Vars
     // =========================================
-
-    // Managing Data
-  	private selectedPicture: any = 0;
-  	private selectedText: any = 0;
-  	private selectedRecipient: any = 0;
-    private mySharing: any; // Social Sharing Object
-
-    // Canvas
-    @ViewChild('myCanvas') canvasEl: ElementRef;
-    private theCanvas: any;
-    private theContext: any;
+    private mySharing: any;
     private finalImage: any;
 
     // =========================================
@@ -46,63 +35,16 @@ export class ConfirmPage {
 
   	constructor(public navCtrl: NavController,
                 public navParams: NavParams,
-                public sharing: SocialSharing,
-                private elementReference: ElementRef) {
+                public sharing: SocialSharing) {
 
-		this.selectedPicture = this.navParams.get('selectedPicture');
-		this.selectedText = this.navParams.get('selectedText');
-		this.selectedRecipient = "Brendan"; // this.navParams.get('selectedRecipient');
-
+		this.finalImage = this.navParams.get('guardianAngel');
         this.mySharing = sharing;
   	}
-
-    ionViewDidLoad(){
-        this.initialiseCanvas();
-    }
 
     // Function called by the Submit Button
     confirmSelection(){
         this.shareManually();
-
-        this.navCtrl.push(FinalPage, { selectedPicture: this.selectedPicture,
-                                        selectedText: this.selectedText,
-                                        selectedRecipient: this.selectedRecipient });
-    }
-
-    // =========================================
-    // Functions for Drawing Canvas
-    // =========================================
-    initialiseCanvas(){
-        this.theCanvas = this.canvasEl.nativeElement;
-        this.theCanvas.width = window.innerWidth;
-        this.theCanvas.height = window.innerHeight;
-        if(this.theCanvas.getContext){
-            this.theContext = this.theCanvas.getContext('2d');
-            this.drawTheImage();
-        }
-    }
-
-    drawTheImage(){
-        // Display the Image
-        var img = new Image();
-        img.setAttribute('crossOrigin', 'anonymous');
-        img.onload = (event) => {
-            this.theContext.drawImage(img, this.theCanvas.width/2 - img.width/2, this.theCanvas.height/2 - img.height/2);
-            this.drawText();
-        };
-        img.src=this.selectedPicture.href;
-    }
-
-    drawText(){
-        this.theContext.strokeStyle = "rgba(256, 0, 0, 1.0)";
-        this.theContext.font = "50px Arial";
-        this.theContext.textAlign = "center";
-        this.theContext.strokeText(this.selectedText.text, this.theCanvas.width/2, this.theCanvas.height/2);
-        this.saveCanvas();
-    }
-
-    saveCanvas(){
-        this.finalImage = this.theCanvas.toDataURL();
+        this.navCtrl.push(FinalPage, { guardianAngel: this.finalImage });
     }
 
     // =========================================
@@ -121,7 +63,7 @@ export class ConfirmPage {
     }
 
     shareToFacebook(){
-        this.mySharing.shareViaFacebookWithPasteMessageHint("I am sending you this Guardian Angel ", this.selectedPicture.href, null)
+        this.mySharing.shareViaFacebookWithPasteMessageHint("I am sending you this Guardian Angel ", this.finalImage, null)
             .then(() => {
                 console.log("Sent Via Facebook");
 
@@ -132,7 +74,7 @@ export class ConfirmPage {
     }
 
     shareToInstagram(){
-        this.mySharing.shareViaInstagram("I am sending you this Guardian Angel ", this.selectedPicture.href)
+        this.mySharing.shareViaInstagram("I am sending you this Guardian Angel ", this.finalImage)
             .then(() => {
                 console.log("Sent Via Instagram");
 
@@ -143,7 +85,7 @@ export class ConfirmPage {
     }
 
     shareToTwitter(){
-        this.mySharing.shareViaTwitter("I am sending you this Guardian Angel ", this.selectedPicture.href, null)
+        this.mySharing.shareViaTwitter("I am sending you this Guardian Angel ", this.finalImage, null)
             .then(() => {
                 console.log("Sent Via Twitter");
 

@@ -1,7 +1,7 @@
 <!--
 	File: final.html
 	created: 02/08/18 by Brendan Thompson
-	Updated: 02/08/18 by Brendan Thompson
+	Updated: 02/20/18 by Brendan Thompson
 
 	Summary: Final page after sending Guardian Angel
 -->
@@ -11,18 +11,13 @@
   </ion-navbar>
 </ion-header>
 
-
 <ion-content padding>
     <h2>Congratulations! The Guardian Angel has been Sent!</h2>
 
    	<!-- Main Picture Display -->
    	<h4>The Guardian Angel:</h4>
    	<ion-card class="main-display">
-   		<ion-card-content>
-	   		<p *ngIf="selectedRecipient != 0">{{ selectedRecipient.name }}</p>
-	   		<p *ngIf="selectedText != 0">{{ selectedText.text }}</p>
-	   		<img *ngIf="selectedPicture != 0" [attr.src]="selectedPicture.href">
-	   	</ion-card-content>
+   		<img [attr.src]="finalImage">
 	</ion-card>
 
     <button ion-button block (click)="(returnHome())">Home</button>

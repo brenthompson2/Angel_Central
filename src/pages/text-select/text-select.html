@@ -1,7 +1,7 @@
 <!--
 	File: text-select.html
 	created: 02/08/18 by Brendan Thompson
-	Updated: 02/08/18 by Brendan Thompson
+	Updated: 02/20/18 by Brendan Thompson
 
 	Summary: Page for selecting the text that will go with the image that will get sent
 -->
@@ -22,11 +22,11 @@
    	<!-- Main Picture Display -->
    	<h4>The Guardian Angel:</h4>
    	<ion-card class="main-display">
-   		<ion-card-content>
-	   		<p *ngIf="currentText != 0">{{ currentText.text }}</p>
-	   		<img *ngIf="selectedPicture != 0" [attr.src]="selectedPicture.href">
-	   	</ion-card-content>
+   		<img [attr.src]="finalImage">
 	</ion-card>
+
+	<!-- Canvas Where the Guardian Angel is drawn -->
+	<canvas #myCanvas style="display: none;"></canvas>
 
 	<!-- Text Select -->
    	<p>Select a Text:</p>

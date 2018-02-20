@@ -1,11 +1,10 @@
 <!--
 	File: pic-select.html
 	created: 02/08/18 by Brendan Thompson
-	Updated: 02/08/18 by Brendan Thompson
+	Updated: 02/20/18 by Brendan Thompson
 
 	Summary: Page for selecting the Image that will get sent
 -->
-
 
 <ion-header>
     <ion-navbar>
@@ -22,10 +21,11 @@
    	<!-- Main Picture Display -->
    	<h4>The Guardian Angel:</h4>
    	<ion-card class="main-display">
-   		<ion-card-content>
-	   		<img *ngIf="currentPicture != 0" [attr.src]="currentPicture.href">
-	   	</ion-card-content>
+   		<img [attr.src]="currentPicture.href">
 	</ion-card>
+
+	<!-- Canvas Where the Guardian Angel is drawn -->
+	<canvas #myCanvas style="display: none;"></canvas>
 
    	<!-- Pictures Select -->
    	<p>Select an Image:</p>
