@@ -29,6 +29,12 @@ export class TextSelectPage {
     // Member Vars
     // =========================================
 
+    // Canvas Style Constants
+    private pictureWidth: any = 900;
+    private pictureHeight: any = 1600;
+    private fontStyle: any = "50px Arial";
+    private fontColor: any = "rgba(0, 0, 255, 1)"
+
     // Data
   	private selectedPicture: any = 0;
   	private currentText: any = 0;
@@ -76,8 +82,8 @@ export class TextSelectPage {
     // =========================================
     initialiseCanvas(){
         this.theCanvas = this.canvasEl.nativeElement;
-        this.theCanvas.width = window.innerWidth;
-        this.theCanvas.height = window.innerHeight;
+        this.theCanvas.width = this.pictureWidth;
+        this.theCanvas.height = this.pictureHeight;
         if(this.theCanvas.getContext){
             this.theContext = this.theCanvas.getContext('2d');
             this.drawTheImage();
@@ -85,6 +91,10 @@ export class TextSelectPage {
     }
 
     drawTheImage(){
+        // Fill background
+        this.theContext.fillStyle = 'rgba(200, 200, 200, 0.5)';
+        this.theContext.fillRect(0, 0, this.theCanvas.width, this.theCanvas.height);
+
         // Display the Image
         var img = new Image();
         img.setAttribute('crossOrigin', 'anonymous');
@@ -96,9 +106,11 @@ export class TextSelectPage {
     }
 
     drawText(){
-        this.theContext.strokeStyle = "rgba(256, 0, 0, 1.0)";
-        this.theContext.font = "50px Arial";
+        this.theContext.font = this.fontStyle;
+        this.theContext.fillStyle = this.fontColor;
+        this.theContext.strokeStyle = this.fontColor;
         this.theContext.textAlign = "center";
+        this.theContext.fillText(this.currentText.text, this.theCanvas.width/2, this.theCanvas.height/2);
         this.theContext.strokeText(this.currentText.text, this.theCanvas.width/2, this.theCanvas.height/2);
         this.saveCanvas();
     }

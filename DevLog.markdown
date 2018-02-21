@@ -13,6 +13,7 @@
 	- Implemented Image Flattening
 	- Simplified Data Model
 	- Removed Recipient-Select Page & Provider
+	- Started Design
 
 ### Need to Implement:
 Functionality:
@@ -22,7 +23,7 @@ Functionality:
 
 Design:
 
-	- Currently isn't one
+	- Need scrolling for pic-select & text-select
 
 BackEnd:
 
@@ -101,6 +102,16 @@ BackEnd:
 ##### Simplified Data Model
 
 - Moved the Canvas to pic-select & text-select pages and only pass the img to Confirm & Final pages
+
+##### Started Design
+
+- set primary color in /theme/variables.scss to #ff0000
+- variables for Canvas style
+	- width
+	- height
+	- font
+	- font color
+- Centered images
 
 ## **==================================================**
 ## **====== 02/18/18 = Brendan Thompson ======**

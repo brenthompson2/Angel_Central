@@ -28,7 +28,11 @@ export class PicSelectPage {
     // Member Vars
     // =========================================
 
-    // Managing Data
+    // Canvas Style Constants
+    private pictureWidth: any = 900;
+    private pictureHeight: any = 1600;
+
+    // Data
 	  currentPicture: any = 0;
     pictureList: any = 0;
 
@@ -57,6 +61,8 @@ export class PicSelectPage {
     // Called when an image is selected from a thumbnail
   	selectPicture(selectedPicture){
   		  this.currentPicture = selectedPicture;
+        this.theContext.clearRect(0, 0, this.theCanvas.width, this.theCanvas.height);
+        this.drawTheImage();
     	  // console.log('Selected a Picture: ' + JSON.stringify(this.currentPicture));
   	}
 
@@ -70,8 +76,8 @@ export class PicSelectPage {
     // =========================================
     initialiseCanvas(){
         this.theCanvas = this.canvasEl.nativeElement;
-        this.theCanvas.width = window.innerWidth;
-        this.theCanvas.height = window.innerHeight;
+        this.theCanvas.width = this.pictureWidth;
+        this.theCanvas.height = this.pictureHeight;
         if(this.theCanvas.getContext){
             this.theContext = this.theCanvas.getContext('2d');
             this.drawTheImage();
@@ -79,13 +85,17 @@ export class PicSelectPage {
     }
 
     drawTheImage(){
+        // Fill background
+        this.theContext.fillStyle = 'rgba(200, 200, 200, 0.5)';
+        this.theContext.fillRect(0, 0, this.theCanvas.width, this.theCanvas.height);
+
         // Display the Image
         var img = new Image();
         img.setAttribute('crossOrigin', 'anonymous');
         img.onload = (event) => {
             this.theContext.drawImage(img, this.theCanvas.width/2 - img.width/2, this.theCanvas.height/2 - img.height/2);
+            this.finalImage = this.theCanvas.toDataURL();
         };
         img.src=this.currentPicture.href;
-        this.finalImage = this.theCanvas.toDataURL();
     }
 }
