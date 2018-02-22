@@ -1,9 +1,9 @@
 /*
-  File: pic-select.ts
-  Updated: 02/08/18 by Brendan Thompson
-  Updated: 02/20/18 by Brendan Thompson
+    File: pic-select.ts
+    Created: 02/08/18 by Brendan Thompson
+    Updated: 02/20/18 by Brendan Thompson
 
-  Summary: Page for selecting the Image that will get sent
+    Summary: Page for selecting the Image that will get sent
 */
 
 import { Component } from '@angular/core';
@@ -33,6 +33,7 @@ export class PicSelectPage {
     private pictureHeight: any = 1600;
 
     // Data
+    selectedCategory: any = 0;
 	  currentPicture: any = 0;
     pictureList: any = 0;
 
@@ -47,8 +48,10 @@ export class PicSelectPage {
                 private pictureListProviderObject : PictureListProvider,
                 private elementReference: ElementRef) {
 
+        this.selectedCategory = navParams.get('selectedCategory');
+
         // Load Pictures
-  		  pictureListProviderObject.loadAll().then(result =>{
+  		  pictureListProviderObject.loadSelected(this.selectedCategory).then(result =>{
   			    this.pictureList = result;
             this.currentPicture = this.pictureList[0];
   		  });

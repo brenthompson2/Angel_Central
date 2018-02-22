@@ -1,7 +1,7 @@
 /*
 	File: picture-list.ts
 	created: 02/08/18 by Brendan Thompson
-	Updated: 02/08/18 by Brendan Thompson
+	Updated: 02/21/18 by Brendan Thompson
 
 	Summary: PictureListProvider gets the pictures
 */
@@ -13,27 +13,40 @@ import { HttpModule } from '@angular/http';
 @Injectable()
 export class PictureListProvider {
 
-	pictureList: any;
+	  pictureList: any;
 
   	constructor() {
-  		this.pictureList = [
-  			{name: 'Image1', href: 'assets/imgs/test-images/5-entry-red.png', alt: 'alternative name'},
-  			{name: 'Image2', href: 'assets/imgs/test-images/5-min-red.png', alt: 'alternative name'},
-  			{name: 'Image3', href: 'assets/imgs/test-images/5-pitches-red.png', alt: 'alternative name'},
-  			{name: 'Image4', href: 'assets/imgs/test-images/5-pm-red.png', alt: 'alternative name'},
-  			{name: 'Image5', href: 'assets/imgs/test-images/500-red.png', alt: 'alternative name'}
-  		];
+    		this.pictureList = [
+      			{category: 'guardian', href: 'assets/imgs/Angels/Guardians/guardian_1_blue_clouds.jpg'},
+      			{category: 'guardian', href: 'assets/imgs/Angels/Guardians/guardian_2_purple.jpg'},
+      			{category: 'guardian', href: 'assets/imgs/Angels/Guardians/guardian_3_lightening.jpg'},
+      			{category: 'guardian', href: 'assets/imgs/Angels/Guardians/guardian_4.jpg'},
+      			{category: 'prayer', href: 'assets/imgs/Angels/Prayers/prayer_1_pink.jpg'},
+            {category: 'prayer', href: 'assets/imgs/Angels/Prayers/prayer_2_male.jpg'},
+            {category: 'prayer', href: 'assets/imgs/Angels/Prayers/prayer_3_childlike.jpg'},
+            {category: 'warrior', href: 'assets/imgs/Angels/Warriors/warrior_1.jpg'},
+            {category: 'warrior', href: 'assets/imgs/Angels/Warriors/warrior_2_golden.jpg'},
+            {category: 'warrior', href: 'assets/imgs/Angels/Warriors/warrior_3_blue.jpg'},
+            {category: 'warrior', href: 'assets/imgs/Angels/Warriors/warrior_4_knight_sword.jpg'}
+    		];
   	}
 
+    // Returns a list of all Angels in the selectedCategory
+    loadSelected(selectedCategory){
+        var listOfSelected: any = [];
+        for (var i = 0; i < this.pictureList.length; i++) {
+            console.log("Comparing " + this.pictureList[i].category + " to " + selectedCategory)
+            if (selectedCategory == this.pictureList[i].category){
+                listOfSelected.push(this.pictureList[i]);
+            }
+        }
+        return Promise.resolve(listOfSelected);
+    }
+
+    // Returns the list of all Angels
   	loadAll(){
-  		return Promise.resolve(this.pictureList);
-  	}
-
-  	getPicByName(nameToFind){
-  		for (var i = 0; i < this.pictureList.length; i++) {
-  			if (this.pictureList[i].name == nameToFind){
-  				return Promise.resolve(this.pictureList[i]);
-  			}
-  		}
+  		  return Promise.resolve(this.pictureList);
   	}
 }
+
+

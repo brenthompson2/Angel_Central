@@ -11,6 +11,7 @@ import { SocialSharing } from '@ionic-native/social-sharing';
 
 // Pages
 import { HomePage } from '../pages/home/home';
+import { CategorySelectPage } from '../pages/category-select/category-select';
 import { PicSelectPage } from '../pages/pic-select/pic-select';
 import { TextSelectPage } from '../pages/text-select/text-select';
 import { ConfirmPage } from '../pages/confirm/confirm';
@@ -24,6 +25,7 @@ import { TextListProvider } from '../providers/text-list/text-list';
   declarations: [
     MyApp,
     HomePage,
+    CategorySelectPage,
     PicSelectPage,
     TextSelectPage,
     ConfirmPage,
@@ -38,6 +40,7 @@ import { TextListProvider } from '../providers/text-list/text-list';
   entryComponents: [
     MyApp,
     HomePage,
+    CategorySelectPage,
     PicSelectPage,
     TextSelectPage,
     ConfirmPage,

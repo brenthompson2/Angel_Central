@@ -1,9 +1,56 @@
 # DevLog
 
-### Development log detailing the daily work done and the references used during the creation of the Guardian Angel Ionic Hybrid Mobile App
-### Winter 2018
+Development log detailing the daily work done and the references used during the creation of the Guardian Angel Ionic Hybrid Mobile App
+Winter 2018
 
 ==================================================================================
+
+## **==================================================**
+## **====== 02/21/18 = Brendan Thompson ======**
+## **==================================================**
+
+### Summary:
+	- Added current Angels
+	- Reset theme primary color: #99ddff
+
+### Need to Implement:
+Functionality:
+
+	- Allow editing text after selected
+	- On Hold:
+		- Get Images from Firebase
+		- Get Texts from Firebase
+
+Design:
+
+	- Homepage from mockup
+	- Final page from mockup
+	- Need scrolling for pic-select & text-select
+
+BackEnd:
+
+	- Firebase?
+	- Some pics are on Trello
+
+### Log of activity
+
+##### Implemented Path Selection flow
+
+1) ionic generate page category-select
+
+2) Designed UI
+
+3) Passed selectedCategory to PicSelectPage
+
+##### Added current Angels
+
+1) added them all to assets/imgs/Angels/
+
+2) read them in using PictureListProvider and created 'category' field
+
+3) created loadSelected(selectedCategory)
+
+4) Called it in PicSelectPage
 
 ## **==================================================**
 ## **====== 02/20/18 = Brendan Thompson ======**
@@ -18,16 +65,21 @@
 ### Need to Implement:
 Functionality:
 
+	- Implement Intended Flow
+		- Choose warrior, guardian, or prayer
+		- Choose Text & then allow editing
 	- Get Images from Firebase
 	- Get Texts from Firebase
 
 Design:
 
 	- Need scrolling for pic-select & text-select
+	- See Flow of App on Trello
 
 BackEnd:
 
 	- Firebase?
+	- Some pics are on Trello
 
 ### Log of activity
 

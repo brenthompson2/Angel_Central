@@ -1,10 +1,10 @@
 /*
-	  File: text-select.ts
-	  Updated: 02/08/18 by Brendan Thompson
-	  Updated: 02/20/18 by Brendan Thompson
+	File: text-select.ts
+	Created: 02/08/18 by Brendan Thompson
+	Updated: 02/20/18 by Brendan Thompson
 
-	  Summary: Page for selecting the text that will go with the image that will get sent
-      - Also writes the canvas out as an image
+	Summary: Page for selecting the text that will go with the image that will get sent
+    - Also writes the canvas out as an image
 */
 
 import { Component } from '@angular/core';

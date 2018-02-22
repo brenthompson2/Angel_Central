@@ -1,0 +1,30 @@
+<!--
+  Generated template for the CategorySelectPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>categorySelect</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="mainContent">
+
+	<ion-row justify-content-center class="contentContainer">
+
+		<h1>What Kind Of Angel Do You Want To Send?</h1>
+
+		<ion-col col-8>
+		    <button ion-button block class="btn" (click)="(selectedCategory('guardian'))">Guardian</button>
+		    <button ion-button block class="btn" (click)="(selectedCategory('warrior'))">Warrior</button>
+		    <button ion-button block class="btn" (click)="(selectedCategory('prayer'))">Prayer</button>
+		</ion-col>
+	</ion-row>
+
+
+</ion-content>

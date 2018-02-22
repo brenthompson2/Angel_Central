@@ -1,0 +1,27 @@
+page-category-select {
+	.mainContent{
+		background-image: url("/assets/imgs/page_2_angel_app_clouds.jpg");
+		background-color: #000;
+	    background-repeat: no-repeat;
+	    background-size: contain;
+	    background-position: center;
+	    height: 100%;
+	    width: auto;
+	    margin: auto;
+	    z-index: 2;
+	    position: relative;
+	}
+
+	h1 {
+		color: #fff;
+	}
+
+	.contentContainer{
+		margin-top: 30%;
+	}
+
+	.btn{
+		margin-top: 10px;
+	}
+
+}

@@ -10,7 +10,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 // Pages
-import { PicSelectPage } from '../pic-select/pic-select';
+import { CategorySelectPage } from '../category-select/category-select';
 
 @Component({
 	selector: 'page-home',
@@ -23,7 +23,7 @@ export class HomePage {
 	}
 
 	getStarted(){
-		this.navCtrl.push(PicSelectPage);
+		this.navCtrl.push(CategorySelectPage);
 	}
 
 }
