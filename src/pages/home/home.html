@@ -1,19 +1,26 @@
 <!--
 	File: home.html
 	created: 02/07/18 by Brendan Thompson
-	Updated: 02/08/18 by Brendan Thompson
+	Updated: 02/22/18 by Brendan Thompson
 
 	Summary: Homepage for the Guardian Angel App
 -->
 
 <ion-header>
     <ion-navbar>
-        <ion-title>Guardian Angel</ion-title>
+        <ion-title>Angel Central</ion-title>
     </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-    <h2>Welcome to Guardian Angel</h2>
+<ion-content class="mainContent">
 
-    <button ion-button block type="submit" (click)="(getStarted())">Pick a Guardian Angel</button>
+	<h1>Angel Central</h1>
+
+	<ion-row justify-content-center class="contentContainer">
+		<ion-col col-8>
+
+		    <button ion-button block class="btn" (click)="(getStarted())">Start Here</button>
+		</ion-col>
+	</ion-row>
+
 </ion-content>

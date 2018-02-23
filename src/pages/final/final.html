@@ -1,25 +1,27 @@
 <!--
-	File: final.html
-	created: 02/08/18 by Brendan Thompson
-	Updated: 02/20/18 by Brendan Thompson
+  	File: final.html
+  	created: 02/08/18 by Brendan Thompson
+  	Updated: 02/22/18 by Brendan Thompson
 
-	Summary: Final page after sending Guardian Angel
+	 Summary: Final page after sending Guardian Angel
 -->
 <ion-header>
-  <ion-navbar>
-    <ion-title>Guardian Angel</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>Angel Central</ion-title>
+    </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-    <h2>Congratulations! The Guardian Angel has been Sent!</h2>
+    <h2>Congratulations! The Angel has been Sent!</h2>
 
    	<!-- Main Picture Display -->
-   	<h4>The Guardian Angel:</h4>
+   	<h4>The Angel:</h4>
    	<ion-card class="main-display">
-   		<img [attr.src]="finalImage">
-	</ion-card>
+     		<img [attr.src]="finalImage">
+  	</ion-card>
 
-    <button ion-button block (click)="(returnHome())">Home</button>
+    <button ion-button block (click)="(returnHome())">Send Another Angel</button>
+
+    <button ion-button block (click)="(buyAlbum())">Buy the Angel Central Album on itunes</button>
 
 </ion-content>

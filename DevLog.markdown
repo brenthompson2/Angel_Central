@@ -10,6 +10,47 @@ Winter 2018
 ## **==================================================**
 
 ### Summary:
+	- Implemented Homepage
+	- Renamed to Angel Central
+	- Implemented Final Page
+
+### Need to Implement:
+Functionality:
+
+	- Use designated text
+	- Link to "Buy Album"
+	- Allow editing text after selected
+	- "You Are Loved" splash screen
+	- On Hold:
+		- Get Images from Firebase
+		- Get Texts from Firebase
+
+Design:
+
+	- Need scrolling for pic-select & text-select
+
+BackEnd:
+
+	- Firebase?
+	- Currently saved within the app
+
+### Log of activity
+
+##### Implemented Homepage
+
+	- used image & added text
+
+##### Implemented Homepage
+
+	- changed btn text to Send Another Angel
+	- added Buy Album button
+		- still need to implement
+
+## **==================================================**
+## **====== 02/21/18 = Brendan Thompson ======**
+## **==================================================**
+
+### Summary:
 	- Added current Angels
 	- Reset theme primary color: #99ddff
 
@@ -30,7 +71,7 @@ Design:
 BackEnd:
 
 	- Firebase?
-	- Some pics are on Trello
+	- Currently saved within the app
 
 ### Log of activity
 

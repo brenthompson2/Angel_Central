@@ -1,9 +1,9 @@
 /*
-	File: final.ts
-	Updated: 02/08/18 by Brendan Thompson
-  Updated: 02/20/18 by Brendan Thompson
+  	File: final.ts
+  	Updated: 02/08/18 by Brendan Thompson
+    Updated: 02/22/18 by Brendan Thompson
 
-	Summary: Final page after sending Guardian Angel
+  	Summary: Final page after sending Guardian Angel
 */
 
 import { Component } from '@angular/core';
@@ -33,6 +33,10 @@ export class FinalPage {
   	}
 
   	returnHome(){
-      this.navCtrl.popToRoot();
+        this.navCtrl.popToRoot();
+    }
+
+    buyAlbum(){
+
     }
 }

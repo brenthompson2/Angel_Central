@@ -1,4 +1,6 @@
 page-category-select {
+
+	// Manages background image
 	.mainContent{
 		background-image: url("/assets/imgs/page_2_angel_app_clouds.jpg");
 		background-color: #000;
@@ -10,6 +12,8 @@ page-category-select {
 	    margin: auto;
 	    z-index: 2;
 	    position: relative;
+
+	    text-align: center;
 	}
 
 	h1 {
@@ -17,7 +21,7 @@ page-category-select {
 	}
 
 	.contentContainer{
-		margin-top: 30%;
+		margin-top: 20%;
 	}
 
 	.btn{
