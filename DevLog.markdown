@@ -13,11 +13,11 @@ Winter 2018
 	- Implemented Homepage
 	- Renamed to Angel Central
 	- Implemented Final Page
+	- Added official Text
 
 ### Need to Implement:
 Functionality:
 
-	- Use designated text
 	- Link to "Buy Album"
 	- Allow editing text after selected
 	- "You Are Loved" splash screen
@@ -27,6 +27,7 @@ Functionality:
 
 Design:
 
+	- Dynamically break up text into multiple lines
 	- Need scrolling for pic-select & text-select
 
 BackEnd:
@@ -40,11 +41,18 @@ BackEnd:
 
 	- used image & added text
 
-##### Implemented Homepage
+##### Implemented Final Page
 
 	- changed btn text to Send Another Angel
 	- added Buy Album button
 		- still need to implement
+
+###### Added official Text
+
+	- added to text-list.ts
+		- created categories and loadSelected(selectedCategory)
+	- Passed the category from pic-select to text-select
+	- loading only category specific
 
 ## **==================================================**
 ## **====== 02/21/18 = Brendan Thompson ======**

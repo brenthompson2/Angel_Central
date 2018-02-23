@@ -1,7 +1,7 @@
 /*
     File: pic-select.ts
     Created: 02/08/18 by Brendan Thompson
-    Updated: 02/20/18 by Brendan Thompson
+    Updated: 02/22/18 by Brendan Thompson
 
     Summary: Page for selecting the Image that will get sent
 */
@@ -34,7 +34,7 @@ export class PicSelectPage {
 
     // Data
     selectedCategory: any = 0;
-	  currentPicture: any = 0;
+    currentPicture: any = 0;
     pictureList: any = 0;
 
     // Canvas
@@ -71,7 +71,8 @@ export class PicSelectPage {
 
     // Called when submit button clicked
     submitSelection(){
-        this.navCtrl.push(TextSelectPage, { selectedPicture: this.currentPicture.href });
+        this.navCtrl.push(TextSelectPage, { selectedPicture: this.currentPicture.href,
+                                            selectedCategory: this.selectedCategory });
     }
 
     // =========================================

@@ -1,7 +1,7 @@
 /*
 	File: text-select.ts
 	Created: 02/08/18 by Brendan Thompson
-	Updated: 02/20/18 by Brendan Thompson
+	Updated: 02/22/18 by Brendan Thompson
 
 	Summary: Page for selecting the text that will go with the image that will get sent
     - Also writes the canvas out as an image
@@ -36,6 +36,7 @@ export class TextSelectPage {
     private fontColor: any = "rgba(0, 0, 255, 1)"
 
     // Data
+    private selectedCategory: any = 0;
   	private selectedPicture: any = 0;
   	private currentText: any = 0;
     private textList: any = 0;
@@ -47,17 +48,18 @@ export class TextSelectPage {
     private finalImage: any;
 
   	constructor(public navCtrl: NavController,
-  				      public navParams: NavParams,
-  				      private TextListProviderObject: TextListProvider,
+  				public navParams: NavParams,
+  				private TextListProviderObject: TextListProvider,
                 private elementReference: ElementRef) {
 
-  		  this.selectedPicture = this.navParams.get('selectedPicture');
+  		this.selectedPicture = this.navParams.get('selectedPicture');
+        this.selectedCategory = this.navParams.get('selectedCategory');
 
       	// Load Texts
-    		TextListProviderObject.loadAll().then(result =>{
-    			this.textList = result;
-            	this.currentText = this.textList[0];
-    		});
+    	TextListProviderObject.loadSelected(this.selectedCategory).then(result =>{
+    		this.textList = result;
+           	this.currentText = this.textList[0];
+    	});
   	}
 
     ionViewDidLoad(){
@@ -66,10 +68,10 @@ export class TextSelectPage {
 
     // Called when a text is selected from the list
   	selectText(selectedText){
-  		  this.currentText = selectedText;
+  		this.currentText = selectedText;
         this.theContext.clearRect(0, 0, this.theCanvas.width, this.theCanvas.height);
         this.drawTheImage();
-    	  // console.log('Selected a Text: ' + JSON.stringify(this.currentText));
+    	// console.log('Selected a Text: ' + JSON.stringify(this.currentText));
   	}
 
     // Called when submit button clicked
