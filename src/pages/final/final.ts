@@ -10,6 +10,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 // My Imports
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 // Pages
 
@@ -27,7 +28,8 @@ export class FinalPage {
     private finalImage: any;
 
   	constructor(public navCtrl: NavController,
-                public navParams: NavParams) {
+                public navParams: NavParams,
+                private IABrowser: InAppBrowser) {
 
   		  this.finalImage = this.navParams.get('guardianAngel');
   	}
@@ -37,6 +39,6 @@ export class FinalPage {
     }
 
     buyAlbum(){
-
+        // const browser = this.IABrowser.create('itms-apps://itunes.apple.com/us/app/pages/id333903271?mt=8', '_system', 'location=yes');
     }
 }

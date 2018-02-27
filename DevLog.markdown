@@ -14,6 +14,7 @@ Winter 2018
 	- Renamed to Angel Central
 	- Implemented Final Page
 	- Added official Text
+	- Designed Navbar
 
 ### Need to Implement:
 Functionality:
@@ -47,12 +48,23 @@ BackEnd:
 	- added Buy Album button
 		- still need to implement
 
-###### Added official Text
+##### Added official Text
 
 	- added to text-list.ts
 		- created categories and loadSelected(selectedCategory)
 	- Passed the category from pic-select to text-select
 	- loading only category specific
+
+##### Designed Navbar & Buttons
+
+	- set nav colors in variables.scss
+	- set button text colors in variables.scss
+
+##### Linked to itunes
+
+	- ionic cordova plugin add cordova-plugin-inappbrowser
+	- npm install --save @ionic-native/in-app-browser
+
 
 ## **==================================================**
 ## **====== 02/21/18 = Brendan Thompson ======**

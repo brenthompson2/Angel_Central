@@ -15,6 +15,10 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
+// variables
+@import "../theme/variables.scss";
+
+
 // Main Guardian Angel Display
 .main-display{
 	height: 50%;
@@ -27,3 +31,8 @@
 		display: block;
 	}
 }
+
+.button {
+	color: #fff;
+}
+
