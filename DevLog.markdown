@@ -6,6 +6,65 @@ Winter 2018
 ==================================================================================
 
 ## **==================================================**
+## **====== 02/26/18 = Brendan Thompson ======**
+## **==================================================**
+
+### Summary:
+	- Fixed for successful android deployment
+	- Changed text to mockup
+	- Added ability to customize text
+
+### Need to Implement:
+Functionality:
+
+	- Link to "Buy Album"
+	- Allow editing text after selected
+	- "You Are Loved" splash screen
+	- On Hold:
+		- Get Images from Firebase
+		- Get Texts from Firebase
+
+Design:
+
+	- Dynamically break up text into multiple lines
+	- Need scrolling for pic-select & text-select
+	- Italics for text
+
+BackEnd:
+
+	- Firebase?
+	- Currently saved within the app
+
+### Log of activity
+
+##### Fixed for successful android deployment
+
+- `background-image: url("../assets/imgs/page_1_angel_app.jpg");`
+
+###### Changed text to mockup
+
+- set instructional text to same as mockup
+
+##### Added ability to customize text
+
+- Added input to text-select.html and mapped to variables/functions
+
+    <!-- Text Edit -->
+    <ion-item *ngIf="textList != 0">
+        <ion-label>Edit the Text:</ion-label>
+        <ion-input [(ngModel)]="currentText.text" type="text">
+        </ion-input>
+        <button ion-button item-end (click)="drawTheImage()">Update</button>
+    </ion-item>
+
+- learned how to shallow copy
+
+	this.currentText = Object.assign({}, this.textList[0]);
+
+
+
+
+## **==================================================**
 ## **====== 02/21/18 = Brendan Thompson ======**
 ## **==================================================**
 

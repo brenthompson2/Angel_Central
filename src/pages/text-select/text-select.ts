@@ -1,7 +1,7 @@
 /*
 	File: text-select.ts
 	Created: 02/08/18 by Brendan Thompson
-	Updated: 02/22/18 by Brendan Thompson
+	Updated: 02/26/18 by Brendan Thompson
 
 	Summary: Page for selecting the text that will go with the image that will get sent
     - Also writes the canvas out as an image
@@ -58,7 +58,7 @@ export class TextSelectPage {
       	// Load Texts
     	TextListProviderObject.loadSelected(this.selectedCategory).then(result =>{
     		this.textList = result;
-           	this.currentText = this.textList[0];
+           	this.currentText = Object.assign({}, this.textList[0]);
     	});
   	}
 
@@ -68,8 +68,7 @@ export class TextSelectPage {
 
     // Called when a text is selected from the list
   	selectText(selectedText){
-  		this.currentText = selectedText;
-        this.theContext.clearRect(0, 0, this.theCanvas.width, this.theCanvas.height);
+  		this.currentText =  Object.assign({}, selectedText);
         this.drawTheImage();
     	// console.log('Selected a Text: ' + JSON.stringify(this.currentText));
   	}
@@ -93,6 +92,9 @@ export class TextSelectPage {
     }
 
     drawTheImage(){
+        // Clear Current Image
+        this.theContext.clearRect(0, 0, this.theCanvas.width, this.theCanvas.height);
+
         // Fill background
         this.theContext.fillStyle = 'rgba(200, 200, 200, 0.5)';
         this.theContext.fillRect(0, 0, this.theCanvas.width, this.theCanvas.height);

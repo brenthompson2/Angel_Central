@@ -1,7 +1,7 @@
 <!--
 	File: text-select.html
 	created: 02/08/18 by Brendan Thompson
-	Updated: 02/22/18 by Brendan Thompson
+	Updated: 02/26/18 by Brendan Thompson
 
 	Summary: Page for selecting the text that will go with the image that will get sent
 -->
@@ -22,17 +22,25 @@
    	<!-- Main Picture Display -->
    	<h4>The Angel:</h4>
    	<ion-card class="main-display">
-   		<img [attr.src]="finalImage">
-	</ion-card>
+     		<img [attr.src]="finalImage">
+  	</ion-card>
 
-	<!-- Canvas Where the Guardian Angel is drawn -->
-	<canvas #myCanvas style="display: none;"></canvas>
+  	<!-- Canvas Where the Guardian Angel is drawn -->
+  	<canvas #myCanvas style="display: none;"></canvas>
 
-	<!-- Text Select -->
+  	<!-- Text Select -->
    	<p>Select a Text:</p>
-	<ion-list>
-		<ion-item *ngFor="let text of textList" (click)="selectText(text)">{{ text.text }}</ion-item>
-	</ion-list>
+  	<ion-list  *ngIf="textList != 0">
+    		<ion-item *ngFor="let text of textList" (click)="selectText(text)">{{ text.text }}</ion-item>
+  	</ion-list>
+
+    <!-- Text Edit -->
+    <ion-item *ngIf="textList != 0">
+        <ion-label>Edit the Text:</ion-label>
+        <ion-input [(ngModel)]="currentText.text" type="text">
+        </ion-input>
+        <button ion-button item-end (click)="drawTheImage()">Update</button>
+    </ion-item>
 
     <button ion-button block type="submit" (click)="(submitSelection())">Submit</button>
 </ion-content>
