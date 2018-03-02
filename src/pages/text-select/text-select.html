@@ -40,10 +40,6 @@
         <ion-textarea [(ngModel)]="currentText.text" type="text"> <!-- // (input)="drawTheImage()" -->
         </ion-textarea>
     </ion-item>
-    <ion-item *ngIf="textList != 0" class="textEdit">
 
-        <button ion-button block type="submit" (click)="(submitSelection())">Submit</button>
-    </ion-item>
-
-    <!-- <button ion-button block type="submit" (click)="(submitSelection())">Submit</button> -->
+    <button ion-button block type="submit" (click)="(submitSelection())">Submit</button>
 </ion-content>
