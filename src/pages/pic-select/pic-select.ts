@@ -70,6 +70,15 @@ export class PicSelectPage {
     	  // console.log('Selected a Picture: ' + JSON.stringify(this.currentPicture));
   	}
 
+    getSelectStatus(selectedPicture){
+        if (selectedPicture == this.currentPicture){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
     // Called when submit button clicked
     submitSelection(){
         this.navCtrl.push(TextSelectPage, { selectedPicture: this.currentPicture.href,

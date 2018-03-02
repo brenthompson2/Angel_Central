@@ -12,6 +12,9 @@ Winter 2018
 ### Summary:
 	A) Removed unnecessary headings
 	B) Designed Angel
+	C) Hid text select (since only 1 option)
+	D) Changed text edit to a box
+	E) Highlighted Selected Image
 
 ### Need to Implement:
 Functionality:
@@ -70,6 +73,11 @@ BackEnd:
 	A) <ion-textarea>
 	B) Added button to reset for if edited
 	C) Started re-setting the textY for the first line
+
+##### Highlighted Selected Image
+
+	- [ngClass]="getSelectStatus(picture) ? 'picture-thumbnail-selected' : 'picture-thumbnail'"
+	- from Awesome Check In team select
 
 ## **==================================================**
 ## **====== 02/26/18 = Brendan Thompson ======**
