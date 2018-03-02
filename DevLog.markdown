@@ -42,6 +42,7 @@ BackEnd:
 			- should make it obvious what to do
 		- "The Angel:" above the Angel display
 		- "Click on the Angel to Select:" about pic & text selection
+		- "Confirm the mission of this Angel" on confirm page
 
 	B) Added whitespace
 		- removed toolbar colors
@@ -63,6 +64,12 @@ BackEnd:
     E) Text location = bottom 1/4th
     F) Border width = 2.2
     	- https://www.w3schools.com/tags/canvas_linewidth.asp
+
+##### Changed text edit to a box
+
+	A) <ion-textarea>
+	B) Added button to reset for if edited
+	C) Started re-setting the textY for the first line
 
 ## **==================================================**
 ## **====== 02/26/18 = Brendan Thompson ======**

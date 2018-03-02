@@ -86,6 +86,12 @@ export class TextSelectPage {
     	// console.log('Selected a Text: ' + JSON.stringify(this.currentText));
   	}
 
+    // Called by a button to reset the text if edited
+    resetText(){
+        this.currentText = Object.assign({}, this.textList[0]);
+        this.drawTheImage();
+    }
+
     // Called when submit button clicked
     submitSelection(){
         this.navCtrl.push(ConfirmPage, { guardianAngel: this.finalImage });
@@ -140,23 +146,24 @@ export class TextSelectPage {
     wrapText() {
         var words = this.currentText.text.split(' ');
         var line = '';
+        var currentTextY = this.textY;
 
         for(var n = 0; n < words.length; n++) {
             var testLine = line + words[n] + ' ';
             var metrics = this.theContext.measureText(testLine);
             var testWidth = metrics.width;
             if (testWidth > this.textWrapWidth && n > 0) {
-                this.theContext.fillText(line, this.textX, this.textY); // fill text
-                this.theContext.strokeText(line, this.textX, this.textY); // stroke border
+                this.theContext.fillText(line, this.textX, currentTextY); // fill text
+                this.theContext.strokeText(line, this.textX, currentTextY); // stroke border
                 line = words[n] + ' ';
-                this.textY += this.textWrapHeight;
+                currentTextY += this.textWrapHeight;
             }
             else {
                 line = testLine;
             }
         }
-        this.theContext.fillText(line, this.textX, this.textY); // fill text
-        this.theContext.strokeText(line, this.textX, this.textY); // stroke border
+        this.theContext.fillText(line, this.textX, currentTextY); // fill text
+        this.theContext.strokeText(line, this.textX, currentTextY); // stroke border
       }
 
     saveCanvas(){
