@@ -35,7 +35,7 @@ export class PictureListProvider {
     loadSelected(selectedCategory){
         var listOfSelected: any = [];
         for (var i = 0; i < this.pictureList.length; i++) {
-            console.log("Comparing " + this.pictureList[i].category + " to " + selectedCategory)
+            // console.log("Comparing " + this.pictureList[i].category + " to " + selectedCategory)
             if (selectedCategory == this.pictureList[i].category){
                 listOfSelected.push(this.pictureList[i]);
             }
