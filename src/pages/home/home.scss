@@ -3,7 +3,7 @@ page-home {
 	// Manages background image
 	.mainContent{
 		background-image: url("../assets/imgs/page_1_angel_app.jpg");
-		background-color: #000;
+		background-color: #fff;
 	    background-repeat: no-repeat;
 	    background-size: contain;
 	    background-position: center;
@@ -22,11 +22,6 @@ page-home {
 	}
 
 	.contentContainer{
-		margin-top: 65%;
+		margin-top: 90%;
 	}
-
-	.btn{
-		margin-top: 10px;
-	}
-
 }
