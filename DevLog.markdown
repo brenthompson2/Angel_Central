@@ -6,6 +6,65 @@ Winter 2018
 ==================================================================================
 
 ## **==================================================**
+## **====== 03/02/18 = Brendan Thompson ======**
+## **==================================================**
+
+### Summary:
+	A) Removed unnecessary headings
+	B) Designed Angel
+
+### Need to Implement:
+Functionality:
+
+	- Link to "Buy Album"
+	- Allow editing text after selected
+	- "You Are Loved" splash screen
+	- On Hold:
+		- Get Images from Firebase
+		- Get Texts from Firebase
+
+Design:
+
+	- Need scrolling for pic-select & text-select
+	- Italics for text
+
+BackEnd:
+
+	- Firebase?
+	- Currently saved within the app
+
+### Log of activity
+
+##### Simplified Design
+
+	A) Removed unnecessary headings
+		- Interface is simpler without them
+			- should make it obvious what to do
+		- "The Angel:" above the Angel display
+		- "Click on the Angel to Select:" about pic & text selection
+
+	B) Added whitespace
+		- removed toolbar colors
+		- removed removed black backgrounds
+
+##### Hid text select (since only 1 option)
+
+	- just commented it out
+
+##### Designed Angel
+
+	A) text wrapping:
+		- https://www.html5canvastutorials.com/tutorials/html5-canvas-wrap-text-tutorial/
+	B) canvas height & width:
+	    private pictureWidth: 760;
+	    private pictureHeight: 1400;
+    C) canvas background color rgba(255, 255, 255, 1)
+    D) Font italic, 70px, white, black border
+    E) Text location = bottom 1/4th
+    F) Border width = 2.2
+    	- https://www.w3schools.com/tags/canvas_linewidth.asp
+
+## **==================================================**
 ## **====== 02/26/18 = Brendan Thompson ======**
 ## **==================================================**
 

@@ -1,7 +1,7 @@
 <!--
 	File: text-select.html
 	created: 02/08/18 by Brendan Thompson
-	Updated: 02/26/18 by Brendan Thompson
+  Updated: 03/02/18 by Brendan Thompson
 
 	Summary: Page for selecting the text that will go with the image that will get sent
 -->
@@ -14,13 +14,10 @@
 
 
 <ion-content padding>
-    <h2>Pick Your Text</h2>
-
     <!-- Spinner for while Loading Data -->
     <ion-spinner name="circles" *ngIf="textList == 0"></ion-spinner>
 
    	<!-- Main Picture Display -->
-   	<h4>The Angel:</h4>
    	<ion-card class="main-display">
      		<img [attr.src]="finalImage">
   	</ion-card>
@@ -29,10 +26,9 @@
   	<canvas #myCanvas style="display: none;"></canvas>
 
   	<!-- Text Select -->
-   	<p>Select a Text:</p>
-  	<ion-list  *ngIf="textList != 0">
+  	<!-- <ion-list  *ngIf="textList != 0">
     		<ion-item *ngFor="let text of textList" (click)="selectText(text)">{{ text.text }}</ion-item>
-  	</ion-list>
+  	</ion-list> -->
 
     <!-- Text Edit -->
     <ion-item *ngIf="textList != 0">

@@ -1,7 +1,7 @@
 /*
 	File: text-select.ts
 	Created: 02/08/18 by Brendan Thompson
-	Updated: 02/26/18 by Brendan Thompson
+	Updated: 03/02/18 by Brendan Thompson
 
 	Summary: Page for selecting the text that will go with the image that will get sent
     - Also writes the canvas out as an image
@@ -26,14 +26,27 @@ import { TextListProvider } from '../../providers/text-list/text-list';
 export class TextSelectPage {
 
     // =========================================
-    // Member Vars
+    // Canvas Angel Design Constants
     // =========================================
 
-    // Canvas Style Constants
-    private pictureWidth: any = 900;
-    private pictureHeight: any = 1600;
-    private fontStyle: any = "50px Arial";
-    private fontColor: any = "rgba(0, 0, 255, 1)"
+    // Canvas
+    private canvasColor = "rgba(255, 255, 255, 1)";
+    private pictureWidth = 760;
+    private pictureHeight = 1400;
+
+    // Text
+    private textX = this.pictureWidth/2;
+    private textY = this.pictureHeight - (this.pictureHeight/4);
+    private textWrapWidth = this.pictureWidth - (this.pictureWidth/9.00);
+    private textWrapHeight = 120;
+    private fontStyle = "italic 70px Arial";
+    private fontColor = "rgba(255, 255, 255, 1)"; // For fillText
+    private borderWidth = 2.2;
+    private borderColor = "rgba(0, 0, 0, 1)"; // For strokeText border
+
+    // =========================================
+    // Member Vars
+    // =========================================
 
     // Data
     private selectedCategory: any = 0;
@@ -96,7 +109,7 @@ export class TextSelectPage {
         this.theContext.clearRect(0, 0, this.theCanvas.width, this.theCanvas.height);
 
         // Fill background
-        this.theContext.fillStyle = 'rgba(200, 200, 200, 0.5)';
+        this.theContext.fillStyle = this.canvasColor;
         this.theContext.fillRect(0, 0, this.theCanvas.width, this.theCanvas.height);
 
         // Display the Image
@@ -111,13 +124,40 @@ export class TextSelectPage {
 
     drawText(){
         this.theContext.font = this.fontStyle;
-        this.theContext.fillStyle = this.fontColor;
-        this.theContext.strokeStyle = this.fontColor;
         this.theContext.textAlign = "center";
-        this.theContext.fillText(this.currentText.text, this.theCanvas.width/2, this.theCanvas.height/2);
-        this.theContext.strokeText(this.currentText.text, this.theCanvas.width/2, this.theCanvas.height/2);
+        this.theContext.fillStyle = this.fontColor; // fill text
+        this.theContext.lineWidth = this.borderWidth;
+        this.theContext.strokeStyle = this.borderColor; // stroke border
+
+        // this.theContext.fillText(this.currentText.text, this.theCanvas.width/2, this.theCanvas.height/2);
+        // this.theContext.strokeText(this.currentText.text, this.theCanvas.width/2, this.theCanvas.height/2);
+        this.wrapText();
+
         this.saveCanvas();
     }
+
+    // Text wrapping function from https://www.html5canvastutorials.com/tutorials/html5-canvas-wrap-text-tutorial/
+    wrapText() {
+        var words = this.currentText.text.split(' ');
+        var line = '';
+
+        for(var n = 0; n < words.length; n++) {
+            var testLine = line + words[n] + ' ';
+            var metrics = this.theContext.measureText(testLine);
+            var testWidth = metrics.width;
+            if (testWidth > this.textWrapWidth && n > 0) {
+                this.theContext.fillText(line, this.textX, this.textY); // fill text
+                this.theContext.strokeText(line, this.textX, this.textY); // stroke border
+                line = words[n] + ' ';
+                this.textY += this.textWrapHeight;
+            }
+            else {
+                line = testLine;
+            }
+        }
+        this.theContext.fillText(line, this.textX, this.textY); // fill text
+        this.theContext.strokeText(line, this.textX, this.textY); // stroke border
+      }
 
     saveCanvas(){
         this.finalImage = this.theCanvas.toDataURL();

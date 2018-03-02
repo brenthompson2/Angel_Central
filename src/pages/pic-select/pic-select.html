@@ -1,7 +1,7 @@
 <!--
 	File: pic-select.html
 	created: 02/08/18 by Brendan Thompson
-	Updated: 02/26/18 by Brendan Thompson
+	Updated: 03/02/18 by Brendan Thompson
 
 	Summary: Page for selecting the Image that will get sent
 -->
@@ -13,13 +13,10 @@
 </ion-header>
 
 <ion-content padding>
-    <h2>Pick Your Image</h2>
-
     <!-- Spinner for while Loading Data -->
     <ion-spinner name="circles" *ngIf="pictureList == 0"></ion-spinner>
 
    	<!-- Main Picture Display -->
-   	<h4>The Angel:</h4>
    	<ion-card text-center class="main-display">
    		<img [attr.src]="finalImage">
 	</ion-card>
@@ -28,7 +25,6 @@
 	<canvas #myCanvas style="display: none;"></canvas>
 
    	<!-- Pictures Select -->
-   	<p>Click on the Angel to Select:</p>
     <ion-grid *ngIf="pictureList != 0">
     	<ion-row >
 			<ng-container *ngFor="let picture of pictureList">

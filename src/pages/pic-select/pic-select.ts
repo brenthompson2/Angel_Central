@@ -1,7 +1,7 @@
 /*
     File: pic-select.ts
     Created: 02/08/18 by Brendan Thompson
-    Updated: 02/22/18 by Brendan Thompson
+    Updated: 03/02/18 by Brendan Thompson
 
     Summary: Page for selecting the Image that will get sent
 */
@@ -28,9 +28,10 @@ export class PicSelectPage {
     // Member Vars
     // =========================================
 
-    // Canvas Style Constants
-    private pictureWidth: any = 900;
-    private pictureHeight: any = 1600;
+    // Canvas Angel Design Constants
+    private canvasColor = "rgba(255, 255, 255, 1)";
+    private pictureWidth = 760;
+    private pictureHeight = 1400;
 
     // Data
     selectedCategory: any = 0;
@@ -90,7 +91,7 @@ export class PicSelectPage {
 
     drawTheImage(){
         // Fill background
-        this.theContext.fillStyle = 'rgba(200, 200, 200, 0.5)';
+        this.theContext.fillStyle = this.canvasColor;
         this.theContext.fillRect(0, 0, this.theCanvas.width, this.theCanvas.height);
 
         // Display the Image
