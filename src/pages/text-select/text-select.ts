@@ -62,8 +62,7 @@ export class TextSelectPage {
 
   	constructor(public navCtrl: NavController,
   				public navParams: NavParams,
-  				private TextListProviderObject: TextListProvider,
-                private elementReference: ElementRef) {
+  				private TextListProviderObject: TextListProvider) {
 
   		this.selectedPicture = this.navParams.get('selectedPicture');
         this.selectedCategory = this.navParams.get('selectedCategory');

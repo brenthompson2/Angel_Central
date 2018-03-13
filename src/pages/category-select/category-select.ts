@@ -23,7 +23,6 @@ export class CategorySelectPage {
 	}
 
 	ionViewDidLoad() {
-	    console.log('ionViewDidLoad CategorySelectPage');
 	}
 
   	selectedCategory(theCategory){

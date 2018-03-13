@@ -46,8 +46,7 @@ export class PicSelectPage {
 
   	constructor(public navCtrl: NavController,
                 public navParams: NavParams,
-                private pictureListProviderObject : PictureListProvider,
-                private elementReference: ElementRef) {
+                private pictureListProviderObject : PictureListProvider) {
 
         this.selectedCategory = navParams.get('selectedCategory');
 
