@@ -10,7 +10,9 @@ Winter 2018
 ## **==================================================**
 
 ### Summary:
-	A) Cleaned Design
+	A) Brought back NavBar color
+	B) Re-organized PictureList data
+	C) Added Latest Images
 
 ### Need to Implement:
 
@@ -34,9 +36,14 @@ BackEnd:
 
 ### Log of activity
 
-##### Cleaned Design
+##### Brought back NavBar color
 
-- brought back NavBar color
+##### Re-organized PictureList data
+
+	- Each picture has a list of categories
+	- passing just the actual href, not the whole object
+
+##### Added Latest Images
 
 ==================================================================================
 

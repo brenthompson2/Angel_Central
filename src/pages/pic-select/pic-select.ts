@@ -80,7 +80,7 @@ export class PicSelectPage {
 
     // Called when submit button clicked
     submitSelection(){
-        this.navCtrl.push(TextSelectPage, { selectedPicture: this.currentPicture.href,
+        this.navCtrl.push(TextSelectPage, { selectedPicture: this.currentPicture,
                                             selectedCategory: this.selectedCategory });
     }
 
@@ -109,6 +109,6 @@ export class PicSelectPage {
             this.theContext.drawImage(img, this.theCanvas.width/2 - img.width/2, this.theCanvas.height/2 - img.height/2);
             this.finalImage = this.theCanvas.toDataURL();
         };
-        img.src=this.currentPicture.href;
+        img.src=this.currentPicture;
     }
 }

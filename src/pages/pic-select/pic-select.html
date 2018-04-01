@@ -30,7 +30,7 @@
 			<ng-container *ngFor="let picture of pictureList">
 			<ion-col col-2 (click)="selectPicture(picture)">
 				<ion-card [ngClass]="getSelectStatus(picture) ? 'picture-thumbnail-selected' : 'picture-thumbnail'">
-					<img src="{{ picture.href }}">
+					<img src="{{ picture }}">
 				</ion-card>
 			</ion-col>
 			</ng-container>
