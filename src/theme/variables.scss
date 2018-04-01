@@ -71,11 +71,11 @@ $colors: (
 // default are overridden.
 
 @import "ionic.theme.default";
-// $toolbar-background: map-get($colors, primary);
+$toolbar-background: map-get($colors, primary);
 
-// $toolbar-md-title-text-color: #fff;
-// $toolbar-ios-title-text-color: #fff;
-// $toolbar-wp-title-text-color: #fff;
+$toolbar-md-title-text-color: #fff;
+$toolbar-ios-title-text-color: #fff;
+$toolbar-wp-title-text-color: #fff;
 
 
 

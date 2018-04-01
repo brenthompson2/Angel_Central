@@ -6,6 +6,41 @@ Winter 2018
 ==================================================================================
 
 ## **==================================================**
+## **====== 04/01/18 = Brendan Thompson ======**
+## **==================================================**
+
+### Summary:
+	A) Cleaned Design
+
+### Need to Implement:
+
+Functionality:
+
+	- Link to "Buy Album"
+	- "You Are Loved" splash screen
+	- On Hold:
+		- Get Images from Firebase
+		- Get Texts from Firebase
+
+Design:
+
+	- Need scrolling for pic-select & text-select
+	- Italics for text
+
+BackEnd:
+
+	- Firebase?
+	- Currently saved within the app
+
+### Log of activity
+
+##### Cleaned Design
+
+- brought back NavBar color
+
+==================================================================================
+
+## **==================================================**
 ## **====== 03/02/18 = Brendan Thompson ======**
 ## **==================================================**
 
