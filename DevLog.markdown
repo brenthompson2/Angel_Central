@@ -6,6 +6,34 @@ Winter 2018
 ==================================================================================
 
 ## **==================================================**
+## **====== 05/05/18 = Brendan Thompson ======**
+## **==================================================**
+
+### Summary:
+	A) Integrated Admob
+
+### Log of activity
+
+##### A) Integrated Admob
+
+https://dev.to/hitman666/how-to-make-money-with-google-admob-ads-in-ionic-framework-3
+
+1) Install Dependencies
+	https://ionicframework.com/docs/native/admob-free/
+	`ionic cordova plugin add cordova-plugin-admob-free`
+	`npm install --save @ionic-native/cordova-plugin-admob-free`
+
+2) Add package to app.module.ts
+	- `import { AdMobFree } from '@ionic-native/admob-free';`
+	- add `AdMobFree` to the providers array
+
+3) Add package to the page
+	- `import { AdMobFree, AdMobFreeBannerConfig, AdMobFreeInterstitialConfig } from '@ionic-native/admob-free';`
+	- `public admob: AdMobFree` as constructor param
+
+4)
+
+## **==================================================**
 ## **====== 04/01/18 = Brendan Thompson ======**
 ## **==================================================**
 

@@ -85,4 +85,8 @@
     <plugin name="cordova-plugin-x-socialsharing" spec="^5.2.1" />
     <engine name="ios" spec="~4.5.4" />
     <plugin name="cordova-plugin-inappbrowser" spec="^2.0.2" />
+    <plugin name="cordova-plugin-admob-free" spec="^0.16.0" />
+    <plugin name="cordova-admob-sdk" spec="~0.13.1">
+        <variable name="PLAY_SERVICES_VERSION" value="11.0.4" />
+    </plugin>
 </widget>

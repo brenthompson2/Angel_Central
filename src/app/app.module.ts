@@ -8,6 +8,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 // My Imports
 import { HttpModule } from '@angular/http';
 import { SocialSharing } from '@ionic-native/social-sharing';
+import { AdMobFree } from '@ionic-native/admob-free';
 
 // Pages
 import { HomePage } from '../pages/home/home';
@@ -52,7 +53,8 @@ import { TextListProvider } from '../providers/text-list/text-list';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     SocialSharing,
     PictureListProvider,
-    TextListProvider
+    TextListProvider,
+    AdMobFree
   ]
 })
 export class AppModule {}

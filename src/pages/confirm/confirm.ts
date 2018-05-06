@@ -11,6 +11,7 @@ import { NavController, NavParams } from 'ionic-angular';
 
 // My Imports
 import { SocialSharing } from '@ionic-native/social-sharing';
+import { AdMobFree, AdMobFreeBannerConfig, AdMobFreeInterstitialConfig } from '@ionic-native/admob-free';
 
 // Pages
 import { FinalPage } from '../final/final';
@@ -35,7 +36,8 @@ export class ConfirmPage {
 
   	constructor(public navCtrl: NavController,
                 public navParams: NavParams,
-                public sharing: SocialSharing) {
+                public sharing: SocialSharing,
+                public admob: AdMobFree) {
 
 		this.finalImage = this.navParams.get('guardianAngel');
         this.mySharing = sharing;
@@ -46,6 +48,21 @@ export class ConfirmPage {
         this.shareManually();
         this.navCtrl.push(FinalPage, { guardianAngel: this.finalImage });
     }
+
+    // Displays an interstitial (full page) Admob add
+    // launchInterstitial() {
+    //     let interstitialConfig: AdMobFreeInterstitialConfig = {
+    //         isTesting: true, // Remove in production
+    //         autoShow: true
+    //         //id: Your Ad Unit ID goes here
+    //     };
+
+    //     this.admob.interstitial.config(interstitialConfig);
+
+    //     this.admob.interstitial.prepare().then(() => {
+    //         // success
+    //     });
+    // }
 
     // =========================================
     // Functions for Sharing
