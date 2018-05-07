@@ -1,7 +1,7 @@
 /*
   	File: confirm.ts
   	Updated: 02/08/18 by Brendan Thompson
-    Updated: 02/20/18 by Brendan Thompson
+    Updated: 05/06/18 by Brendan Thompson
 
   	Summary: Page for confirming and sending the Guardian Angel
 */
@@ -53,7 +53,12 @@ export class ConfirmPage {
     }
 
     ionViewWillLeave(){
-        this.admobFree.banner.hide();
+        // Hide Banner Ad
+        this.platform.ready().then(() => {
+            if(this.platform.is('mobile')){
+                this.admobFree.banner.hide();
+            }
+        });
     }
 
     // =========================================

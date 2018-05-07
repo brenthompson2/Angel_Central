@@ -12,18 +12,25 @@ Winter-Spring 2018
 ### Summary:
 	A) Integrated more Admob test ads
 	B) Fixed text-edit auto-update
+	C) Fixed Text-Overflow bug
 
 ### Log of activity
 
 ##### A) Integrated more Admob test ads
 
-- Added constantly refreshing Banner ads to the pic-select, text-select, confirm, and final pages
-- Probably need to set up the bank account info to get the official ads
+	- Added constantly refreshing Banner ads to the pic-select, text-select, confirm, and final pages
+	- Probably need to set up the bank account info to get the official ads
 
 ##### B) Fixed text-edit auto-update
 
-- Switched from calling `drawTheImage()` with the `input` ion-input event call-back to `change`
-- `<ion-textarea [(ngModel)]="currentText.text" type="text" (change)="drawTheImage()">`
+	- Switched from calling `drawTheImage()` with the `input` ion-input event call-back to `change`
+	- `<ion-textarea [(ngModel)]="currentText.text" type="text" (change)="drawTheImage()">`
+
+##### C) Fixed Text-Overflow bug
+
+	- Before, once a line was full it would print it
+	- now, once a line is full it adds it to a list of lines
+	- then it starts printing the lines from `y = canvasHeight - (numLines * lineHeight))`
 
 ## **==================================================**
 ## **====== 05/05/18 = Brendan Thompson ======**

@@ -1,7 +1,7 @@
 /*
     File: pic-select.ts
     Created: 02/08/18 by Brendan Thompson
-    Updated: 03/02/18 by Brendan Thompson
+    Updated: 05/06/18 by Brendan Thompson
 
     Summary: Page for selecting the Image that will get sent
 */
@@ -58,14 +58,6 @@ export class PicSelectPage {
 
         this.selectedCategory = navParams.get('selectedCategory');
 
-        // Show Ad
-        platform.ready().then(() => {
-            if(this.platform.is('mobile')){
-                // this.launchInterstitialAd();
-                this.showBannerAd();
-            }
-        });
-
         // Load Pictures
   		pictureListProviderObject.loadSelected(this.selectedCategory).then(result =>{
   			    this.pictureList = result;
@@ -81,13 +73,19 @@ export class PicSelectPage {
         // Show Banner Ad
         this.platform.ready().then(() => {
             if(this.platform.is('mobile')){
+                console.log("Platform is mobile");
                 this.showBannerAd();
             }
         });
     }
 
     ionViewWillLeave(){
-        this.admobFree.banner.hide();
+        // Hide Banner Ad
+        this.platform.ready().then(() => {
+            if(this.platform.is('mobile')){
+                this.admobFree.banner.hide();
+            }
+        });
     }
 
     // =========================================

@@ -1,7 +1,7 @@
 /*
 	File: text-select.ts
 	Created: 02/08/18 by Brendan Thompson
-	Updated: 03/02/18 by Brendan Thompson
+    Updated: 05/06/18 by Brendan Thompson
 
 	Summary: Page for selecting the text that will go with the image that will get sent
     - Also writes the canvas out as an image
@@ -75,14 +75,6 @@ export class TextSelectPage {
   		this.selectedPicture = this.navParams.get('selectedPicture');
         this.selectedCategory = this.navParams.get('selectedCategory');
 
-        // Show Ad
-        platform.ready().then(() => {
-            if(this.platform.is('mobile')){
-                // this.launchInterstitialAd();
-                this.showBannerAd();
-            }
-        });
-
       	// Load Texts
     	TextListProviderObject.loadSelected(this.selectedCategory).then(result =>{
     		this.textList = result;
@@ -104,7 +96,12 @@ export class TextSelectPage {
     }
 
     ionViewWillLeave(){
-        this.admobFree.banner.hide();
+        // Hide Banner Ad
+        this.platform.ready().then(() => {
+            if(this.platform.is('mobile')){
+                this.admobFree.banner.hide();
+            }
+        });
     }
 
     // =========================================
@@ -161,12 +158,14 @@ export class TextSelectPage {
     }
 
     drawText(){
+        // Configure Text
         this.theContext.font = this.fontStyle;
         this.theContext.textAlign = "center";
         this.theContext.fillStyle = this.fontColor; // fill text
         this.theContext.lineWidth = this.borderWidth;
         this.theContext.strokeStyle = this.borderColor; // stroke border
 
+        // Draw Text
         // this.theContext.fillText(this.currentText.text, this.theCanvas.width/2, this.theCanvas.height/2);
         // this.theContext.strokeText(this.currentText.text, this.theCanvas.width/2, this.theCanvas.height/2);
         this.wrapText();
@@ -176,27 +175,41 @@ export class TextSelectPage {
 
     // Text wrapping function from https://www.html5canvastutorials.com/tutorials/html5-canvas-wrap-text-tutorial/
     wrapText() {
-        var words = this.currentText.text.split(' ');
-        var line = '';
-        var currentTextY = this.textY;
+        var allWordsList = this.currentText.text.split(' ');
+        var allLinesList: any = [];
 
-        for(var n = 0; n < words.length; n++) {
-            var testLine = line + words[n] + ' ';
-            var metrics = this.theContext.measureText(testLine);
+        // Create allLinesList
+        var currentLine = '';
+        for(var n = 0; n < allWordsList.length; n++) {
+            var testLine = currentLine + allWordsList[n] + ' '; // create a testLine that adds the next word onto currentLine
+            var metrics = this.theContext.measureText(testLine); // calculate the width given the testLine
             var testWidth = metrics.width;
-            if (testWidth > this.textWrapWidth && n > 0) {
-                this.theContext.fillText(line, this.textX, currentTextY); // fill text
-                this.theContext.strokeText(line, this.textX, currentTextY); // stroke border
-                line = words[n] + ' ';
-                currentTextY += this.textWrapHeight;
+
+            // Check if line fits
+            if (testWidth > this.textWrapWidth) { // If the word makes it to big, add the currentLine
+                allLinesList.push(currentLine);
+                console.log(allLinesList);
+                currentLine = allWordsList[n] + ' ';
             }
             else {
-                line = testLine;
+                currentLine = testLine; // else, the testLine is still small enough and can be used as the currentLine
             }
         }
-        this.theContext.fillText(line, this.textX, currentTextY); // fill text
-        this.theContext.strokeText(line, this.textX, currentTextY); // stroke border
-      }
+        allLinesList.push(currentLine); // add final words
+        console.log(allLinesList);
+
+        // Calculate needed height for allLinesList
+        var currentTextY = this.theCanvas.height - (this.textWrapHeight * allLinesList.length);
+        console.log("Starting text at Y = " + currentTextY);
+
+        // Draw allLinesList
+        for (var i = 0; i < allLinesList.length; i++){
+            this.theContext.fillText(allLinesList[i], this.textX, currentTextY); // fill text
+            this.theContext.strokeText(allLinesList[i], this.textX, currentTextY); // stroke border
+            console.log("Writing Line ->" + allLinesList[i] + "<-");
+            currentTextY += this.textWrapHeight;
+        }
+    }
 
     saveCanvas(){
         this.finalImage = this.theCanvas.toDataURL();
@@ -218,5 +231,4 @@ export class TextSelectPage {
             // success
         }).catch(e => console.log(e));
     }
-
 }
