@@ -1,20 +1,40 @@
 # DevLog
 
 Development log detailing the daily work done and the references used during the creation of the Guardian Angel Ionic Hybrid Mobile App
-Winter 2018
+Winter-Spring 2018
 
 ==================================================================================
+
+## **==================================================**
+## **====== 05/06/18 = Brendan Thompson ======**
+## **==================================================**
+
+### Summary:
+	A) Integrated more Admob test ads
+	B) Fixed text-edit auto-update
+
+### Log of activity
+
+##### A) Integrated more Admob test ads
+
+- Added constantly refreshing Banner ads to the pic-select, text-select, confirm, and final pages
+- Probably need to set up the bank account info to get the official ads
+
+##### B) Fixed text-edit auto-update
+
+- Switched from calling `drawTheImage()` with the `input` ion-input event call-back to `change`
+- `<ion-textarea [(ngModel)]="currentText.text" type="text" (change)="drawTheImage()">`
 
 ## **==================================================**
 ## **====== 05/05/18 = Brendan Thompson ======**
 ## **==================================================**
 
 ### Summary:
-	A) Integrated Admob
+	A) Integrated Admob test ads
 
 ### Log of activity
 
-##### A) Integrated Admob
+##### A) Integrated Admob test ads
 
 https://dev.to/hitman666/how-to-make-money-with-google-admob-ads-in-ionic-framework-3
 
@@ -29,9 +49,47 @@ https://dev.to/hitman666/how-to-make-money-with-google-admob-ads-in-ionic-framew
 
 3) Add package to the page
 	- `import { AdMobFree, AdMobFreeBannerConfig, AdMobFreeInterstitialConfig } from '@ionic-native/admob-free';`
-	- `public admob: AdMobFree` as constructor param
+	- `public admobFree: AdMobFree` as constructor param
 
-4)
+4) Call function upon page enter
+
+    ionViewDidEnter(){
+        // Show Banner Ad
+        this.platform.ready().then(() => {
+            if(this.platform.is('mobile')){
+                this.showBannerAd();
+            }
+        });
+    }
+
+5) Create functions for showing banners and interstitial ads
+
+    showBannerAd(){
+        let bannerConfig: AdMobFreeBannerConfig = {
+            isTesting: true, // Remove in production
+            autoShow: true
+            // id: 'ca-app-pub-9786610691421616/5622014155'
+        };
+        this.admobFree.banner.config(bannerConfig);
+        this.admobFree.banner.prepare().then(() => {
+            // success
+        }).catch(e => console.log(e));
+    }
+
+    // Displays an interstitial (full page) Admob add
+    launchInterstitialAd() {
+        let interstitialConfig: AdMobFreeInterstitialConfig = {
+            // id: 'ca-app-pub-9786610691421616/5622014155',
+            isTesting: true,
+            autoShow: true
+        };
+        this.admobFree.interstitial.config(interstitialConfig);
+        this.admobFree.interstitial.prepare()
+        .then(() => {
+            this.admobFree.interstitial.show()
+        })
+        .catch(e => console.log(e));
+    }
 
 ## **==================================================**
 ## **====== 04/01/18 = Brendan Thompson ======**

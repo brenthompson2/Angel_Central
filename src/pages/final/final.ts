@@ -28,48 +28,52 @@ export class FinalPage {
     // Member Vars
     // =========================================
     private finalImage: any;
-    private myAdmob: any;
+
+    // =========================================
+    // Constructor & Lifecycle events
+    // =========================================
 
   	constructor(public navCtrl: NavController,
                 public navParams: NavParams,
                 private platform: Platform,
-                private admob: AdMobFree) {
+                private admobFree: AdMobFree) {
 
   		this.finalImage = this.navParams.get('guardianAngel');
-        this.myAdmob = admob;
+  	}
 
-        platform.ready().then(() => {
+    ionViewDidEnter(){
+        // Show Banner Ad
+        this.platform.ready().then(() => {
             if(this.platform.is('mobile')){
-                this.launchInterstitial();
+                this.showBannerAd();
             }
         });
-  	}
+    }
+
+    ionViewWillLeave(){
+        this.admobFree.banner.hide();
+    }
+
+    // =========================================
+    // Buttons
+    // =========================================
 
   	returnHome(){
         this.navCtrl.popToRoot();
     }
 
-    buyAlbum(){
+    // To resend the angel just go back a page
+    sendAgain(){
+        this.navCtrl.pop();
+    }
+
+    // buyAlbum(){
         // const browser = this.IABrowser.create('itms-apps://itunes.apple.com/us/app/pages/id333903271?mt=8', '_system', 'location=yes');
-    }
+    // }
 
-    // Displays an interstitial (full page) Admob add
-    launchInterstitial() {
-        let interstitialConfig: AdMobFreeInterstitialConfig = {
-            // id: 'ca-app-pub-9786610691421616/5622014155',
-            isTesting: true,
-            autoShow: true
-        };
-
-        this.myAdmob.interstitial.config(interstitialConfig);
-
-        this.myAdmob.interstitial.prepare()
-        .then(() => {
-            this.myAdmob.interstitial.show()
-        })
-        .catch(e => console.log(e));
-    }
-
+    // =========================================
+    // Advertisements
+    // =========================================
     showBannerAd(){
         let bannerConfig: AdMobFreeBannerConfig = {
             isTesting: true, // Remove in production
@@ -77,10 +81,27 @@ export class FinalPage {
             // id: 'ca-app-pub-9786610691421616/5622014155'
         };
 
-        this.admob.banner.config(bannerConfig);
+        this.admobFree.banner.config(bannerConfig);
 
-        this.admob.banner.prepare().then(() => {
+        this.admobFree.banner.prepare().then(() => {
             // success
         }).catch(e => console.log(e));
+    }
+
+    // Displays an interstitial (full page) Admob add
+    launchInterstitialAd() {
+        let interstitialConfig: AdMobFreeInterstitialConfig = {
+            // id: 'ca-app-pub-9786610691421616/5622014155',
+            isTesting: true,
+            autoShow: true
+        };
+
+        this.admobFree.interstitial.config(interstitialConfig);
+
+        this.admobFree.interstitial.prepare()
+        .then(() => {
+            this.admobFree.interstitial.show()
+        })
+        .catch(e => console.log(e));
     }
 }

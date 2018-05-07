@@ -11,6 +11,8 @@ import { NavController, NavParams } from 'ionic-angular';
 
 // My Imports
 import { ElementRef, ViewChild } from '@angular/core';
+import { AdMobFree, AdMobFreeBannerConfig } from '@ionic-native/admob-free';
+import { Platform } from 'ionic-angular';
 
 // Pages
 import { TextSelectPage } from '../text-select/text-select';
@@ -44,26 +46,57 @@ export class PicSelectPage {
     private theContext: any;
     private finalImage: any;
 
+    // =========================================
+    // Constructor & Lifecycle events
+    // =========================================
+
   	constructor(public navCtrl: NavController,
                 public navParams: NavParams,
-                private pictureListProviderObject : PictureListProvider) {
+                private pictureListProviderObject : PictureListProvider,
+                private platform: Platform,
+                private admobFree: AdMobFree) {
 
         this.selectedCategory = navParams.get('selectedCategory');
 
+        // Show Ad
+        platform.ready().then(() => {
+            if(this.platform.is('mobile')){
+                // this.launchInterstitialAd();
+                this.showBannerAd();
+            }
+        });
+
         // Load Pictures
-  		  pictureListProviderObject.loadSelected(this.selectedCategory).then(result =>{
+  		pictureListProviderObject.loadSelected(this.selectedCategory).then(result =>{
   			    this.pictureList = result;
             this.currentPicture = this.pictureList[0];
-  		  });
+  		});
   	}
 
     ionViewDidLoad(){
         this.initialiseCanvas();
     }
 
+    ionViewDidEnter(){
+        // Show Banner Ad
+        this.platform.ready().then(() => {
+            if(this.platform.is('mobile')){
+                this.showBannerAd();
+            }
+        });
+    }
+
+    ionViewWillLeave(){
+        this.admobFree.banner.hide();
+    }
+
+    // =========================================
+    // Picture Selection
+    // =========================================
+
     // Called when an image is selected from a thumbnail
   	selectPicture(selectedPicture){
-  		  this.currentPicture = selectedPicture;
+  		this.currentPicture = selectedPicture;
         this.theContext.clearRect(0, 0, this.theCanvas.width, this.theCanvas.height);
         this.drawTheImage();
     	  // console.log('Selected a Picture: ' + JSON.stringify(this.currentPicture));
@@ -110,5 +143,22 @@ export class PicSelectPage {
             this.finalImage = this.theCanvas.toDataURL();
         };
         img.src=this.currentPicture;
+    }
+
+    // =========================================
+    // Advertisements
+    // =========================================
+    showBannerAd(){
+        let bannerConfig: AdMobFreeBannerConfig = {
+            isTesting: true, // Remove in production
+            autoShow: true
+            // id: 'ca-app-pub-9786610691421616/5622014155'
+        };
+
+        this.admobFree.banner.config(bannerConfig);
+
+        this.admobFree.banner.prepare().then(() => {
+            // success
+        }).catch(e => console.log(e));
     }
 }

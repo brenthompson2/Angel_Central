@@ -34,10 +34,10 @@
     <ion-item *ngIf="textList != 0" class="textEdit">
         <ion-label stacked>Edit the Text:</ion-label>
         <button ion-button item-end (click)="resetText()">Reset</button>
-        <button ion-button item-end (click)="drawTheImage()">Update</button>
+        <!-- <button ion-button item-end (click)="drawTheImage()">Update</button> -->
     </ion-item>
     <ion-item *ngIf="textList != 0" class="textEdit">
-        <ion-textarea [(ngModel)]="currentText.text" type="text"> <!-- // (input)="drawTheImage()" -->
+        <ion-textarea [(ngModel)]="currentText.text" type="text" (change)="drawTheImage()">
         </ion-textarea>
     </ion-item>
 
