@@ -1,7 +1,7 @@
 /*
   	File: confirm.ts
   	Updated: 02/08/18 by Brendan Thompson
-    Updated: 05/06/18 by Brendan Thompson
+    Updated: 05/08/18 by Brendan Thompson
 
   	Summary: Page for confirming and sending the Guardian Angel
 */
@@ -30,6 +30,15 @@ export class ConfirmPage {
     // =========================================
     private finalImage: any;
 
+    // Admob
+    private isTesting = true; // change to false in production
+    private bannerAdUnitID: any;
+    private interstitialAdUnitID: any;
+    private bannerAdUnitID_Android = 'ca-app-pub-9786610691421616/5099124183'; // confirm-page-banner-android
+    private bannerAdUnitID_iOS = 'ca-app-pub-9786610691421616/2824314631'; // confirm-page-banner-ios
+    private interstitialAdUnitID_Android = 'ca-app-pub-9786610691421616/5234570140'; // sent-angel-interstitial-android
+    private interstitialAdUnitID_iOS = 'ca-app-pub-9786610691421616/4334629431'; // sent-angel-interstitial-ios
+
     // =========================================
     // Constructor & Lifecycle events
     // =========================================
@@ -47,6 +56,14 @@ export class ConfirmPage {
         // Show Banner Ad
         this.platform.ready().then(() => {
             if(this.platform.is('mobile')){
+                if (this.platform.is('Android')){
+                    this.bannerAdUnitID = this.bannerAdUnitID_Android;
+                    this.interstitialAdUnitID = this.interstitialAdUnitID_Android;
+                }
+                else {
+                    this.bannerAdUnitID = this.bannerAdUnitID_iOS;
+                    this.interstitialAdUnitID = this.interstitialAdUnitID_iOS;
+                }
                 this.showBannerAd();
             }
             else {
@@ -149,9 +166,10 @@ export class ConfirmPage {
     // =========================================
     showBannerAd(){
         let bannerConfig: AdMobFreeBannerConfig = {
-            isTesting: true, // Remove in production
-            autoShow: true
-            // id: 'ca-app-pub-9786610691421616/5622014155'
+            isTesting: this.isTesting,
+            autoShow: true,
+            id: this.bannerAdUnitID // confirm-page-banner Ad Unit ID
+            // id: 'ca-app-pub-3940256099942544/6300978111' // google test-banner Ad Unit ID
         };
 
         this.admobFree.banner.config(bannerConfig);
@@ -164,9 +182,10 @@ export class ConfirmPage {
     // Displays an interstitial (full page) Admob add
     launchInterstitialAd() {
         let interstitialConfig: AdMobFreeInterstitialConfig = {
-            // id: 'ca-app-pub-9786610691421616/5622014155',
-            isTesting: true,
-            autoShow: true
+            isTesting: this.isTesting,
+            autoShow: true,
+            id: this.interstitialAdUnitID // sent-angel-interstitial Ad Unit ID
+            // id: 'ca-app-pub-3940256099942544/8691691433' // google test-interstitial Ad Unit ID
         };
 
         this.admobFree.interstitial.config(interstitialConfig);

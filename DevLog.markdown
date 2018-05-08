@@ -6,6 +6,46 @@ Winter-Spring 2018
 ==================================================================================
 
 ## **==================================================**
+## **====== 05/08/18 = Brendan Thompson ======**
+## **==================================================**
+
+### Summary:
+	A) Made pic-select scrollable
+	B) Fixed image
+	C) Hid back button
+	D) Continued Admob Integration
+
+### Log of activity
+
+##### A) Made pic-select scrollable
+
+- https://forum.ionicframework.com/t/ion-cards-in-a-horizontal-scroll-possible/84746/7
+
+	<ion-scroll scrollX="true" direction="x" *ngIf="pictureList != 0">
+		<ng-container *ngFor="let picture of pictureList">
+		    <ion-card (click)="selectPicture(picture)" class="picture-thumbnail" [ngClass]="getSelectStatus(picture) ? 'picture-thumbnail-selected' : 'picture-thumbnail'">
+				<img src="{{ picture }}">
+			</ion-card>
+		</ng-container>
+	</ion-scroll>
+
+##### B) Fixed image
+
+- guardian-angel.jpg had bad dimensions, downloaded the better version
+
+##### C) Hid back button
+
+- since there is a "send the same angel again" button, it is cleaner to not have a back button
+
+##### D) Continued Admob Integration
+
+- Banners & Interstitials working with google's sample `ad unit ID`s: https://developers.google.com/admob/android/test-ads#sample_ad_units
+- Banners working with custom `ad unit ID`
+- Interstitials `NOT` working with custom `ad unit ID`
+- created and used a different banner `ad unit ID` for every single page for each os (4 x 2)
+- created and used a different interstitial `ad unit ID` for each os (1 x 2)
+
+## **==================================================**
 ## **====== 05/06/18 = Brendan Thompson ======**
 ## **==================================================**
 

@@ -1,7 +1,7 @@
 /*
     File: pic-select.ts
     Created: 02/08/18 by Brendan Thompson
-    Updated: 05/06/18 by Brendan Thompson
+    Updated: 05/08/18 by Brendan Thompson
 
     Summary: Page for selecting the Image that will get sent
 */
@@ -46,6 +46,12 @@ export class PicSelectPage {
     private theContext: any;
     private finalImage: any;
 
+    // Admob
+    private isTesting = true; // change to false in production
+    private bannerAdUnitID: any;
+    private bannerAdUnitID_Android = 'ca-app-pub-9786610691421616/8279821292'; // pic-select-page-banner-android
+    private bannerAdUnitID_iOS = 'ca-app-pub-9786610691421616/8268213002'; // pic-select-page-banner-ios
+
     // =========================================
     // Constructor & Lifecycle events
     // =========================================
@@ -73,7 +79,14 @@ export class PicSelectPage {
         // Show Banner Ad
         this.platform.ready().then(() => {
             if(this.platform.is('mobile')){
-                console.log("Platform is mobile");
+                if (this.platform.is('android')){
+                    console.log("Android Device");
+                    this.bannerAdUnitID = this.bannerAdUnitID_Android;
+                }
+                else {
+                    this.bannerAdUnitID = this.bannerAdUnitID_iOS;
+                    console.log("NOT Android Device");
+                }
                 this.showBannerAd();
             }
             else {
@@ -151,9 +164,10 @@ export class PicSelectPage {
     // =========================================
     showBannerAd(){
         let bannerConfig: AdMobFreeBannerConfig = {
-            isTesting: true, // Remove in production
-            autoShow: true
-            // id: 'ca-app-pub-9786610691421616/5622014155'
+            isTesting: this.isTesting,
+            autoShow: true,
+            id: this.bannerAdUnitID // pic-select-page-banner Ad Unit ID
+            // id: 'ca-app-pub-3940256099942544/6300978111' // google test-banner Ad Unit ID
         };
 
         this.admobFree.banner.config(bannerConfig);
