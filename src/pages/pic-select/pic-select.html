@@ -24,8 +24,17 @@
 	<!-- Canvas Where the Guardian Angel is drawn -->
 	<canvas #myCanvas style="display: none;"></canvas>
 
-   	<!-- Pictures Select -->
-    <ion-grid *ngIf="pictureList != 0">
+	<!-- Scrolling Pictures Select -->
+	<ion-scroll scrollX="true" direction="x" *ngIf="pictureList != 0">
+		<ng-container *ngFor="let picture of pictureList">
+		    <ion-card (click)="selectPicture(picture)" class="picture-thumbnail" [ngClass]="getSelectStatus(picture) ? 'picture-thumbnail-selected' : 'picture-thumbnail'">
+				<img src="{{ picture }}">
+			</ion-card>
+		</ng-container>
+	</ion-scroll>
+
+   	<!-- Old Static Pictures Select -->
+    <!-- <ion-grid *ngIf=" pictureList != 0">
     	<ion-row >
 			<ng-container *ngFor="let picture of pictureList">
 			<ion-col col-2 (click)="selectPicture(picture)">
@@ -35,7 +44,7 @@
 			</ion-col>
 			</ng-container>
 		</ion-row>
-	</ion-grid>
+	</ion-grid> -->
 
     <button ion-button block type="submit" (click)="(submitSelection())">Submit</button>
 </ion-content>
