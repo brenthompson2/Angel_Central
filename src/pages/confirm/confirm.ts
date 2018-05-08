@@ -49,6 +49,9 @@ export class ConfirmPage {
             if(this.platform.is('mobile')){
                 this.showBannerAd();
             }
+            else {
+                console.log("Ad unavailable: not recognized as mobile device");
+            }
         });
     }
 
@@ -73,6 +76,9 @@ export class ConfirmPage {
         this.platform.ready().then(() => {
             if(this.platform.is('mobile')){
                 this.launchInterstitialAd();
+            }
+            else {
+                console.log("Ad unavailable: not recognized as mobile device");
             }
         });
 

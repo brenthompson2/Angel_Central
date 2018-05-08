@@ -92,6 +92,9 @@ export class TextSelectPage {
             if(this.platform.is('mobile')){
                 this.showBannerAd();
             }
+            else {
+                console.log("Ad unavailable: not recognized as mobile device");
+            }
         });
     }
 

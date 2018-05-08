@@ -76,6 +76,9 @@ export class PicSelectPage {
                 console.log("Platform is mobile");
                 this.showBannerAd();
             }
+            else {
+                console.log("Ad unavailable: not recognized as mobile device");
+            }
         });
     }
 
