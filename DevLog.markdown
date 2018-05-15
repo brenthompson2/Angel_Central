@@ -6,6 +6,23 @@ Winter-Spring 2018
 ==================================================================================
 
 ## **==================================================**
+## **====== 05/15/18 = Brendan Thompson ======**
+## **==================================================**
+
+### Summary:
+	A) Fixed iOS back btn arrow color
+
+### Log of activity
+
+##### A) Fixed iOS back btn arrow color
+
+- apps.scss:
+
+	ion-header ion-icon.back-button-icon.icon {
+	    color: #fff;
+	}
+
+## **==================================================**
 ## **====== 05/08/18 = Brendan Thompson ======**
 ## **==================================================**
 
@@ -14,6 +31,7 @@ Winter-Spring 2018
 	B) Fixed image
 	C) Hid back button
 	D) Continued Admob Integration
+	E) Started Firebase Storage integration
 
 ### Log of activity
 
@@ -44,6 +62,21 @@ Winter-Spring 2018
 - Interstitials `NOT` working with custom `ad unit ID`
 - created and used a different banner `ad unit ID` for every single page for each os (4 x 2)
 - created and used a different interstitial `ad unit ID` for each os (1 x 2)
+
+##### E) Started Firebase Storage integration
+
+1) `npm install firebase`
+2) Connect to Firebase Storage & set rules to public
+3) Add Firebase to the app
+
+	- create app/firebase.config.ts
+	- imports
+		import { Storage, initializeApp } from 'firebase';
+		import { FIREBASE_CONFIG } from "../../app/firebase.config";
+	- call initializeApp(FIREBASE_CONFIG);
+
+4) Create FirebaseStorageProvider
+	- need to implement
 
 ## **==================================================**
 ## **====== 05/06/18 = Brendan Thompson ======**
