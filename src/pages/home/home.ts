@@ -8,6 +8,8 @@
 
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { initializeApp } from 'firebase';
+import { FIREBASE_CONFIG } from "../../app/firebase.config";
 
 // Pages
 import { CategorySelectPage } from '../category-select/category-select';
@@ -19,7 +21,7 @@ import { CategorySelectPage } from '../category-select/category-select';
 export class HomePage {
 
 	constructor(public navCtrl: NavController) {
-
+		initializeApp(FIREBASE_CONFIG);
 	}
 
 	getStarted(){

@@ -6,11 +6,74 @@ Winter-Spring 2018
 ==================================================================================
 
 ## **==================================================**
+## **====== 05/16/18 = Brendan Thompson ======**
+## **==================================================**
+
+### Summary:
+	A) Implemented Firebase Storage
+
+### Log of activity
+
+##### A) Implemented Firebase Storage
+
+- Originally all the images were hosted on Firebase Storage and the data was stored on Firebase Database
+- The issue was that I was configuring the "Cloud Firestore (BETA)" version instead of the basic "Realtime Database"
+
+1) Install Firebase Dependency
+
+	`npm install firebase`
+
+2) Import Firebase into PictureListProvider
+
+	`import * as firebase from 'firebase';`
+
+3) Get the data stored in firebase
+
+- the reference node snapshot has the categories as children
+- each category node snapshot has the associated imgs as children
+- For some reason you have to `return false` when using `forEach()`
+
+    try {
+        firebase.database().ref().once('value', (snapshot) => {
+            snapshot.forEach((categorySnap) => {
+                switch (categorySnap.key) {
+                    case "guardians":
+                        categorySnap.forEach((imgSnap) => {
+                            this.guardiansList.push(imgSnap.val());
+                            return false;
+                        });
+                        break;
+                    case "warriors":
+                        categorySnap.forEach((imgSnap) => {
+                            this.warriorsList.push(imgSnap.val());
+                            return false;
+                        });
+                        break;
+                    case "prayers":
+                        categorySnap.forEach((imgSnap) => {
+                            this.prayersList.push(imgSnap.val());
+                            return false;
+                        });
+                        break;
+                    default:
+                        console.log("Found Unknown Key");
+                        break;
+                }
+                return false;
+            });
+        });
+    }
+    catch (e) {
+        console.log(e);
+    }
+
+## **==================================================**
 ## **====== 05/15/18 = Brendan Thompson ======**
 ## **==================================================**
 
 ### Summary:
 	A) Fixed iOS back btn arrow color
+	B) Continued Struggling with Firebase Storage
 
 ### Log of activity
 
@@ -20,6 +83,89 @@ Winter-Spring 2018
 
 	ion-header ion-icon.back-button-icon.icon {
 	    color: #fff;
+	}
+
+##### B) Continued Struggling with Firebase Storage
+
+- https://youtu.be/urFpUVjLw0Y
+1) `npm install firebase`
+2) Connect to Firebase Storage & set rules to public
+3) Setup Configuration
+	- create app/firebase.config.ts
+		- get content by clicking "Add Firebase to your web app"
+	- call `initializeApp(FIREBASE_CONFIG);` inside constructor for home.ts
+
+4) Imports
+	- import { Storage, initializeApp } from 'firebase';
+	- import { FIREBASE_CONFIG } from "../../app/firebase.config";
+
+5) Create FirebaseStorageProvider
+	- need to implement
+
+6) Able to get 1 image
+
+	try {
+        firebase.storage().ref().child('angels/guardians/guardian_4.jpg').getDownloadURL()
+            .then((response) => {
+                this.finalImage = response;
+                console.log(this.finalImage);
+            });
+    }
+    catch (e) {
+        console.log(e);
+    }
+
+7) Struggled for an hour to read firebase data
+
+##### C) Started building blank firebase database project
+
+- https://youtu.be/I_73tsvj6OI
+
+	ionic start using-firebase blank
+	npm install firebase angularfire2
+	ionic g provider firebaseService
+
+- Setup Module.ts
+
+	import { FirebaseServiceProvider } from '../providers/firebase-service/firebase-service';
+	import { AngularFireDatabaseModule } from 'angularfire2/database';
+	import { AngularFireModule } from 'angularfire2';
+	import { HttpModule } from '@angular/http';
+
+	const firebaseConfig = {
+	    apiKey: "AIzaSyBsV2HP3aN5K7b3C3G1TqNGIsEoUcGty5s",
+	    authDomain: "angel-central.firebaseapp.com",
+	    databaseURL: "https://angel-central.firebaseio.com",
+	    projectId: "angel-central",
+	    storageBucket: "angel-central.appspot.com",
+	    messagingSenderId: "442168506940"
+	};
+
+	import: [
+		...
+	    HttpModule,
+	    AngularFireDatabaseModule,
+	    AngularFireModule.initializeApp(firebaseConfig),
+    ]
+
+- setup provider
+
+	constructor(public afd: AngularFireDatabase) {
+		afd.list('angels').valueChanges().subscribe(console.log);
+	}
+	- FirebaseListObservable changed to AngularFireList<T>: https://github.com/angular/angularfire2/blob/master/docs/version-5-upgrade.md#updating-firebaselistobservable-to-angularfirelistt
+	- "Client doesn't have permission to access the desired data" even though the rules are totally open
+		- https://firebase.google.com/docs/firestore/security/get-started?authuser=0
+
+	// Allow read/write access to all users under any conditions
+	// Warning: **NEVER** use this rule set in production; it allows
+	// anyone to overwrite your entire database.
+	service cloud.firestore {
+	  match /databases/{database}/documents {
+	    match /{document=**} {
+	      allow read, write: if true;
+	    }
+	  }
 	}
 
 ## **==================================================**
@@ -65,17 +211,19 @@ Winter-Spring 2018
 
 ##### E) Started Firebase Storage integration
 
+- https://youtu.be/urFpUVjLw0Y
 1) `npm install firebase`
 2) Connect to Firebase Storage & set rules to public
-3) Add Firebase to the app
-
+3) Setup Configuration
 	- create app/firebase.config.ts
-	- imports
-		import { Storage, initializeApp } from 'firebase';
-		import { FIREBASE_CONFIG } from "../../app/firebase.config";
-	- call initializeApp(FIREBASE_CONFIG);
+		- get content by clicking "Add Firebase to your web app"
+	- call `initializeApp(FIREBASE_CONFIG);` inside constructor for home.ts
 
-4) Create FirebaseStorageProvider
+4) Add Imports
+	- import { Storage, initializeApp } from 'firebase';
+	- import { FIREBASE_CONFIG } from "../../app/firebase.config";
+
+5) Create FirebaseStorageProvider
 	- need to implement
 
 ## **==================================================**

@@ -1,7 +1,7 @@
 /*
     File: pic-select.ts
     Created: 02/08/18 by Brendan Thompson
-    Updated: 05/08/18 by Brendan Thompson
+    Updated: 05/16/18 by Brendan Thompson
 
     Summary: Page for selecting the Image that will get sent
 */
@@ -13,6 +13,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { ElementRef, ViewChild } from '@angular/core';
 import { AdMobFree, AdMobFreeBannerConfig } from '@ionic-native/admob-free';
 import { Platform } from 'ionic-angular';
+import * as firebase from 'firebase';
 
 // Pages
 import { TextSelectPage } from '../text-select/text-select';
@@ -39,6 +40,7 @@ export class PicSelectPage {
     selectedCategory: any = 0;
     currentPicture: any = 0;
     pictureList: any = 0;
+    picturesURL: any = 0;
 
     // Canvas
     @ViewChild('myCanvas') canvasEl: ElementRef;
@@ -64,7 +66,7 @@ export class PicSelectPage {
 
         this.selectedCategory = navParams.get('selectedCategory');
 
-        // Load Pictures
+        // Load Pictures from PictureListProvider
   		pictureListProviderObject.loadSelected(this.selectedCategory).then(result =>{
   			    this.pictureList = result;
             this.currentPicture = this.pictureList[0];
@@ -80,12 +82,10 @@ export class PicSelectPage {
         this.platform.ready().then(() => {
             if(this.platform.is('mobile')){
                 if (this.platform.is('android')){
-                    console.log("Android Device");
                     this.bannerAdUnitID = this.bannerAdUnitID_Android;
                 }
                 else {
                     this.bannerAdUnitID = this.bannerAdUnitID_iOS;
-                    console.log("NOT Android Device");
                 }
                 this.showBannerAd();
             }
