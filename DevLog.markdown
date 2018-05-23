@@ -26,8 +26,8 @@ Winter-Spring 2018
 
 ##### B) Changed Text-Edit UX
 
-- changed reset btn to just an icon
--
+- changed reset btn to just an icon & outlined
+- Added Set Text btn
 
 ## **==================================================**
 ## **====== 05/16/18 = Brendan Thompson ======**

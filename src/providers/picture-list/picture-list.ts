@@ -29,14 +29,14 @@ export class PictureListProvider {
     // ==============================================
   	constructor() {
         this.initData_local();
-        this.getData_FirebaseDatabase();
+        this.initData_FirebaseDatabase();
   	}
 
     // ==============================================
     // Load from Firebase
     // ==============================================
 
-    getData_FirebaseDatabase(){
+    initData_FirebaseDatabase(){
         try {
             firebase.database().ref().once('value', (snapshot) => {
                 snapshot.forEach((categorySnap) => {
@@ -89,6 +89,7 @@ export class PictureListProvider {
         }
     }
 
+    // Gets one image from Firebase Storage
     // getImage(){
     //     var dataRef: any;
     //     var imageFromStorage: any;

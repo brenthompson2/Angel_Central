@@ -66,11 +66,20 @@ export class PicSelectPage {
 
         this.selectedCategory = navParams.get('selectedCategory');
 
-        // Load Pictures from PictureListProvider
-  		pictureListProviderObject.loadSelected(this.selectedCategory).then(result =>{
-  			    this.pictureList = result;
-            this.currentPicture = this.pictureList[0];
-  		});
+        if (navigator.onLine){
+            // Load Pictures from Firebase through PictureListProvider
+            pictureListProviderObject.loadSelected(this.selectedCategory).then(result =>{
+                this.pictureList = result;
+                this.currentPicture = this.pictureList[0];
+            });
+        }
+        else {
+            // Load Pictures locally through PictureListProvider
+            pictureListProviderObject.loadSelected_local(this.selectedCategory).then(result =>{
+                this.pictureList = result;
+                this.currentPicture = this.pictureList[0];
+            });
+        }
   	}
 
     ionViewDidLoad(){
