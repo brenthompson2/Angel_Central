@@ -6,6 +6,30 @@ Winter-Spring 2018
 ==================================================================================
 
 ## **==================================================**
+## **====== 05/23/18 = Brendan Thompson ======**
+## **==================================================**
+
+### Summary:
+	A) Formatted home start button
+	B) Changed Text-Edit UX
+
+### Log of activity
+
+##### A) Formatted home start button
+
+- height set relative to bottom of screen
+
+	width: 70%;
+	margin-left: 15%;
+	position: absolute;
+	bottom: 25%;
+
+##### B) Changed Text-Edit UX
+
+- changed reset btn to just an icon
+-
+
+## **==================================================**
 ## **====== 05/16/18 = Brendan Thompson ======**
 ## **==================================================**
 
@@ -16,7 +40,7 @@ Winter-Spring 2018
 
 ##### A) Implemented Firebase Storage
 
-- Originally all the images were hosted on Firebase Storage and the data was stored on Firebase Database
+- When I was struggling before, all of the images were hosted on Firebase Storage and the data was stored on Firebase Database
 - The issue was that I was configuring the "Cloud Firestore (BETA)" version instead of the basic "Realtime Database"
 
 1) Install Firebase Dependency
