@@ -11,9 +11,10 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 // My Imports
-import { ElementRef, ViewChild } from '@angular/core';
-import { AdMobFree, AdMobFreeBannerConfig } from '@ionic-native/admob-free';
-import { Platform } from 'ionic-angular';
+import { ElementRef, ViewChild } from '@angular/core'; // canvas
+import { AdMobFree, AdMobFreeBannerConfig } from '@ionic-native/admob-free'; // Admob
+import { Platform } from 'ionic-angular'; // check for platform ready (also check if iOS, Android, Web)
+import { ModalController, Modal } from 'ionic-angular'; // Modal Text Input
 
 // Pages
 import { ConfirmPage } from '../confirm/confirm';
@@ -76,7 +77,8 @@ export class TextSelectPage {
   				public navParams: NavParams,
   				private TextListProviderObject: TextListProvider,
                 private platform: Platform,
-                private admobFree: AdMobFree) {
+                private admobFree: AdMobFree,
+                private modalCtrl: ModalController) {
 
   		this.selectedPicture = this.navParams.get('selectedPicture');
         this.selectedCategory = this.navParams.get('selectedCategory');
@@ -122,6 +124,43 @@ export class TextSelectPage {
     // =========================================
     // Text Selection
     // =========================================
+
+    openEditTextModal(){
+        const textEditModal: Modal = this.modalCtrl.create('TextEditModalPage', {text: this.currentText.text });
+        textEditModal.present();
+        textEditModal.onDidDismiss((data) => {
+            if (data){
+                this.currentText.text = data;
+                this.drawTheImage();
+            }
+            // console.log(data);
+        });
+
+        // Alert Prompt
+        // let textEditModal = this.alrtCtrl.create({
+        //     title: 'Edit Text',
+        //     inputs: [
+        //         {
+        //              name: 'Text',
+        //              placeholder: this.currentText.text
+        //         }
+        //     ],
+        //     buttons: [
+        //         {
+        //             text: 'Cancel',
+        //             handler: data => {
+        //                 console.log('Cancel');
+        //             }
+        //         },
+        //         {
+        //             text: 'Save',
+        //             handler: data => {
+        //                 console.log('Save: ' + data);
+        //             }
+        //         }
+        //     ]
+        // })
+    }
 
     // Called when a text is selected from the list
   	selectText(selectedText){
@@ -203,7 +242,7 @@ export class TextSelectPage {
             // Check if line fits
             if (testWidth > this.textWrapWidth) { // If the word makes it to big, add the currentLine
                 allLinesList.push(currentLine);
-                console.log(allLinesList);
+                // console.log(allLinesList);
                 currentLine = allWordsList[n] + ' ';
             }
             else {
@@ -211,17 +250,17 @@ export class TextSelectPage {
             }
         }
         allLinesList.push(currentLine); // add final words
-        console.log(allLinesList);
+        // console.log(allLinesList);
 
         // Calculate needed height for allLinesList
         var currentTextY = this.theCanvas.height - (this.textWrapHeight * allLinesList.length);
-        console.log("Starting text at Y = " + currentTextY);
+        // console.log("Starting text at Y = " + currentTextY);
 
         // Draw allLinesList
         for (var i = 0; i < allLinesList.length; i++){
             this.theContext.fillText(allLinesList[i], this.textX, currentTextY); // fill text
             this.theContext.strokeText(allLinesList[i], this.textX, currentTextY); // stroke border
-            console.log("Writing Line ->" + allLinesList[i] + "<-");
+            // console.log("Writing Line ->" + allLinesList[i] + "<-");
             currentTextY += this.textWrapHeight;
         }
     }

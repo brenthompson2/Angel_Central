@@ -1,0 +1,33 @@
+<!--
+	File: text-edit-modal.html
+	Created: 05/28/18 by Brendan Thompson
+    Updated: 05/28/18 by Brendan Thompson
+
+	Summary: Modal page for editing the text that will go with the image that will get sent
+ -->
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Edit the Text</ion-title>
+    <ion-buttons end>
+    	<button ion-button (click)="cancel()" class="cancelBtn">Cancel</button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding class="popover-style">
+
+    <!-- Text Edit -->
+    <ion-item *ngIf="textList != 0" class="textEdit">
+        <!-- <ion-textarea [(ngModel)]="currentText" type="text" (change)="drawTheImage()"> -->
+        <ion-textarea [(ngModel)]="currentText" type="text">
+        </ion-textarea>
+    </ion-item>
+
+    <!-- <ion-modal-view class="popover-style"></ion-modal-view> -->
+
+	<button ion-button block type="submit" (click)="save()">Save</button>
+
+</ion-content>

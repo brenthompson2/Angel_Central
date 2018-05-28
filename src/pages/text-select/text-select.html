@@ -30,14 +30,16 @@
   	</ion-list> -->
 
     <!-- Text Edit -->
-    <ion-item *ngIf="textList != 0" class="textEdit">
+    <!-- <ion-item *ngIf="textList != 0" class="textEdit">
         <button ion-button item-start (click)="drawTheImage()">Update</button>
         <button ion-button item-end outline (click)="resetText()" class="undo-btn"><ion-icon name="undo"></ion-icon></button>
     </ion-item>
     <ion-item *ngIf="textList != 0" class="textEdit">
         <ion-textarea [(ngModel)]="currentText.text" type="text" (change)="drawTheImage()">
         </ion-textarea>
-    </ion-item>
+    </ion-item> -->
+
+    <button ion-button block (click)="(openEditTextModal())">Edit Text</button>
 
     <button ion-button block type="submit" (click)="(submitSelection())">Submit</button>
 </ion-content>
