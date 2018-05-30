@@ -180,6 +180,15 @@ export class TextSelectPage {
         this.navCtrl.push(ConfirmPage, { guardianAngel: this.finalImage });
     }
 
+    // only show the reset btn if text is edited (NOT WORKING)
+    textIsEdited(){
+        let originalText = Object.assign({}, this.textList[0]);
+        if (this.currentText.text != originalText.text){
+            return true;
+        }
+        return false;
+    }
+
     // =========================================
     // Functions for Drawing Canvas
     // =========================================

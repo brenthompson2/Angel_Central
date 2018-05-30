@@ -10,6 +10,19 @@ Winter-Spring 2018
 ## **==================================================**
 
 ### Summary:
+	A) Added conditional reset btn to Text-Edit UX
+
+### Log of activity
+
+##### A) Added conditional reset btn to Text-Edit UX
+
+- only shows if text is edited
+
+## **==================================================**
+## **====== 05/28/18 = Brendan Thompson ======**
+## **==================================================**
+
+### Summary:
 	A) Changed Text-Edit UX Again
 
 ### Log of activity

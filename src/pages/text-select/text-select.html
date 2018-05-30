@@ -40,6 +40,7 @@
     </ion-item> -->
 
     <button ion-button block (click)="(openEditTextModal())">Edit Text</button>
+    <button ion-button block *ngIf="textIsEdited()" (click)="(resetText())">Reset Text</button>
 
     <button ion-button block type="submit" (click)="(submitSelection())">Submit</button>
 </ion-content>
