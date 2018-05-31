@@ -66,25 +66,25 @@ export class PicSelectPage {
 
         this.selectedCategory = navParams.get('selectedCategory');
 
-        if (navigator.onLine){
-            // Load Pictures from Firebase through PictureListProvider
-            pictureListProviderObject.loadSelected(this.selectedCategory).then(result =>{
-                this.pictureList = result;
-                this.currentPicture = this.pictureList[0];
-            });
-        }
-        else {
-            // Load Pictures locally through PictureListProvider
-            pictureListProviderObject.loadSelected_local(this.selectedCategory).then(result =>{
-                this.pictureList = result;
-                this.currentPicture = this.pictureList[0];
-            });
-        }
+        this.platform.ready().then(() => {
+            if (navigator.onLine && this.platform.is('mobile')){
+                // Load Pictures from Firebase through PictureListProvider
+                pictureListProviderObject.loadSelected(this.selectedCategory).then(result =>{
+                    this.pictureList = result;
+                    this.currentPicture = this.pictureList[0];
+                    this.initialiseCanvas();
+                });
+            }
+            else {
+                // Load Pictures locally through PictureListProvider
+                pictureListProviderObject.loadSelected_local(this.selectedCategory).then(result =>{
+                    this.pictureList = result;
+                    this.currentPicture = this.pictureList[0];
+                    this.initialiseCanvas();
+                });
+            }
+        });
   	}
-
-    ionViewDidLoad(){
-        this.initialiseCanvas();
-    }
 
     ionViewDidEnter(){
         // Show Banner Ad
