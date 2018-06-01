@@ -67,7 +67,7 @@ export class PicSelectPage {
         this.selectedCategory = navParams.get('selectedCategory');
 
         this.platform.ready().then(() => {
-            if (navigator.onLine && this.platform.is('mobile')){
+            if (navigator.onLine && this.platform.is('mobile') && !this.platform.is('mobileweb')){
                 // Load Pictures from Firebase through PictureListProvider
                 pictureListProviderObject.loadSelected(this.selectedCategory).then(result =>{
                     this.pictureList = result;
