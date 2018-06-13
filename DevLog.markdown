@@ -6,6 +6,26 @@ Winter-Spring 2018
 ==================================================================================
 
 ## **==================================================**
+## **====== 06/01/18 = Brendan Thompson ======**
+## **==================================================**
+
+### Summary:
+	A) Tried to load imgs locally for Ionic View
+	B) Added Background Music
+
+### Log of activity
+
+##### A) Tried to load imgs locally for Ionic View
+
+- didn't work to load locally on Ionic View
+- `if (navigator.onLine && this.platform.is('mobile') && !this.platform.is('mobileweb')){`
+
+##### B) Added Background Music
+
+- Attempted to use NativeAudio plugin
+- Not working
+
+## **==================================================**
 ## **====== 05/31/18 = Brendan Thompson ======**
 ## **==================================================**
 
@@ -16,6 +36,7 @@ Winter-Spring 2018
 
 ##### A) Only pulls images if on mobile & online
 
+- didn't work to load locally on Ionic View
 - `if (navigator.onLine && this.platform.is('mobile')){`
 
 

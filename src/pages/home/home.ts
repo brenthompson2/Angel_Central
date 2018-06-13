@@ -10,6 +10,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { initializeApp } from 'firebase';
 import { FIREBASE_CONFIG } from "../../app/firebase.config";
+import { NativeAudio } from '@ionic-native/native-audio';
 
 // Pages
 import { CategorySelectPage } from '../category-select/category-select';
@@ -20,12 +21,24 @@ import { CategorySelectPage } from '../category-select/category-select';
 })
 export class HomePage {
 
-	constructor(public navCtrl: NavController) {
-		initializeApp(FIREBASE_CONFIG);
+	constructor(public navCtrl: NavController,
+				private nativeAudio: NativeAudio) {
+
+		this.nativeAudio.preloadComplex('bckgrndMusic', '../../assets/Angel_Central.wav', 1, 1, 0).then(
+			function(msg){
+				console.info(msg) // load succeeded
+				this.nativeAudio.loop('bckgrndMusic');
+            },
+			function(msg){
+				console.info(msg) // load failed
+			}
+		);
+
+
+		initializeApp(FIREBASE_CONFIG); // Initialize app w/ firebase
 	}
 
 	getStarted(){
 		this.navCtrl.push(CategorySelectPage);
 	}
-
 }
