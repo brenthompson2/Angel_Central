@@ -6,11 +6,25 @@ Winter-Spring 2018
 ==================================================================================
 
 ## **==================================================**
+## **====== 06/14/18 = Brendan Thompson ======**
+## **==================================================**
+
+### Summary:
+	A) Prepared for Apple App store
+
+### Log of activity
+
+##### A) Prepared for Apple App store
+
+- Using local images for iOS as opposed to Firebase
+
+## **==================================================**
 ## **====== 06/13/18 = Brendan Thompson ======**
 ## **==================================================**
 
 ### Summary:
 	A) Ran on iOS device
+	B) Fixed Vulnerable Dependency
 
 ### Log of activity
 
@@ -34,6 +48,12 @@ Winter-Spring 2018
 	- "Warning: Attempt to present <GADInterstitialViewController: ...> on <MainViewController ...> which is already presenting <UIActivityViewController ...>"
 		- https://stackoverflow.com/questions/26022756/warning-attempt-to-present-on-whose-view-is-not-in-the-window-hierarchy-s
 			- probably because the interstitial is being called from the last ViewController
+
+##### B) Fixed Vulnerable Dependency
+
+- Changed version of hapijs/hoek from `2.13.3` to `4.2.1`
+
+##### C) Added link to iTunes
 
 ## **==================================================**
 ## **====== 06/01/18 = Brendan Thompson ======**

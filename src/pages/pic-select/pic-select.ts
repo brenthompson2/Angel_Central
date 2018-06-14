@@ -1,7 +1,7 @@
 /*
     File: pic-select.ts
     Created: 02/08/18 by Brendan Thompson
-    Updated: 05/16/18 by Brendan Thompson
+    Updated: 06/14/18 by Brendan Thompson
 
     Summary: Page for selecting the Image that will get sent
 */
@@ -67,7 +67,7 @@ export class PicSelectPage {
         this.selectedCategory = navParams.get('selectedCategory');
 
         this.platform.ready().then(() => {
-            if (navigator.onLine && this.platform.is('mobile') && !this.platform.is('mobileweb')){
+            if (navigator.onLine && this.platform.is('mobile') && !this.platform.is('mobileweb') && !this.platform.is('ios')){
                 // Load Pictures from Firebase through PictureListProvider
                 pictureListProviderObject.loadSelected(this.selectedCategory).then(result =>{
                     this.pictureList = result;
