@@ -87,17 +87,17 @@ export class ConfirmPage {
 
     // Function called by the Submit Button
     confirmSelection(){
-        this.shareManually();
+        // this.shareManually();
 
         // Show Interstitial Ad
-        // this.platform.ready().then(() => {
-        //     if(this.platform.is('mobile')){
-        //         this.launchInterstitialAd();
-        //     }
-        //     else {
-        //         console.log("Ad unavailable: not recognized as mobile device");
-        //     }
-        // });
+        this.platform.ready().then(() => {
+            if(this.platform.is('mobile')){
+                this.launchInterstitialAd();
+            }
+            else {
+                console.log("Ad unavailable: not recognized as mobile device");
+            }
+        });
 
         this.navCtrl.push(FinalPage, { guardianAngel: this.finalImage });
     }

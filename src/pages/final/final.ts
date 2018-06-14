@@ -63,7 +63,7 @@ export class FinalPage {
                     this.interstitialAdUnitID = this.interstitialAdUnitID_iOS;
                 }
                 this.showBannerAd();
-                this.launchInterstitialAd();
+                // this.launchInterstitialAd();
             }
             else {
                 console.log("Ad unavailable: not recognized as mobile device");
@@ -128,14 +128,7 @@ export class FinalPage {
 
         this.admobFree.interstitial.prepare()
         .then(() => {
-            if (this.admobFree.interstitial.isReady()){
-                this.admobFree.interstitial.show()
-            }
-            else {
-                setTimeout(() => {
-                    this.admobFree.interstitial.show()
-                }, 1000);
-            }
+            this.admobFree.interstitial.show();
         })
         .catch(e => console.log(e));
     }

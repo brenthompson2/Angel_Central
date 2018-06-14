@@ -21,9 +21,14 @@ Winter-Spring 2018
 
 - Open interstitial in FinalPage ionViewDidEnter()
 	- as opposed to ConfirmPage confirmSelection()
+	- didn't fix
 
 - "Ad wasn't ready"
 	- if !isReady() then setTimeout 1000ms & try again
+	- didn't fix
+
+- Still saying "attempt to present GADInterstitialViewController on MainViewController which is already presenting UIActivityViewController"
+	- testing without trying to share also...
 
 ## **==================================================**
 ## **====== 06/13/18 = Brendan Thompson ======**
