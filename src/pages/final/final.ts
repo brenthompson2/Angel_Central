@@ -128,7 +128,14 @@ export class FinalPage {
 
         this.admobFree.interstitial.prepare()
         .then(() => {
-            this.admobFree.interstitial.show()
+            if (this.admobFree.interstitial.isReady()){
+                this.admobFree.interstitial.show()
+            }
+            else {
+                setTimeout(() => {
+                    this.admobFree.interstitial.show()
+                }, 1000);
+            }
         })
         .catch(e => console.log(e));
     }
