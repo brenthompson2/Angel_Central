@@ -6,6 +6,56 @@ Winter-Spring 2018
 ==================================================================================
 
 ## **==================================================**
+## **====== 06/13/18 = Brendan Thompson ======**
+## **==================================================**
+
+### Summary:
+	A) Ran on iOS device
+
+### Log of activity
+
+##### A) Ran on iOS device
+
+1) Not getting past Splashscreen
+	- https://stackoverflow.com/questions/26314005/ionic-failed-to-load-webpage-with-error-could-not-connect-to-the-server
+		- `ionic cordova prepare ios`
+
+2) Doesn't draw canvas w/ images from web
+	- https://stackoverflow.com/questions/37398695/cors-cordova-issues-with-access-control-allow-origin
+		- `ionic cordova plugin add cordova-plugin-whitelist`
+		- Add to config.xml
+			- `<access origin="*"/>`
+			- `<allow-navigation href="*"/>`
+		- `<meta http-equiv="Content-Security-Policy" content="default-src *; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data:">`
+	- Can't find solution
+		- works with local images
+
+3) Interstitial Ad not working
+	- "Warning: Attempt to present <GADInterstitialViewController: ...> on <MainViewController ...> which is already presenting <UIActivityViewController ...>"
+		- https://stackoverflow.com/questions/26022756/warning-attempt-to-present-on-whose-view-is-not-in-the-window-hierarchy-s
+			- probably because the interstitial is being called from the last ViewController
+
+## **==================================================**
+## **====== 06/01/18 = Brendan Thompson ======**
+## **==================================================**
+
+### Summary:
+	A) Tried to load imgs locally for Ionic View
+	B) Added Background Music
+
+### Log of activity
+
+##### A) Tried to load imgs locally for Ionic View
+
+- didn't work to load locally on Ionic View
+- `if (navigator.onLine && this.platform.is('mobile') && !this.platform.is('mobileweb')){`
+
+##### B) Added Background Music
+
+- Attempted to use NativeAudio plugin
+- Not working
+
+## **==================================================**
 ## **====== 05/31/18 = Brendan Thompson ======**
 ## **==================================================**
 
