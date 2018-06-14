@@ -63,6 +63,7 @@ export class FinalPage {
                     this.interstitialAdUnitID = this.interstitialAdUnitID_iOS;
                 }
                 this.showBannerAd();
+                this.launchInterstitialAd();
             }
             else {
                 console.log("Ad unavailable: not recognized as mobile device");

@@ -90,14 +90,14 @@ export class ConfirmPage {
         this.shareManually();
 
         // Show Interstitial Ad
-        this.platform.ready().then(() => {
-            if(this.platform.is('mobile')){
-                this.launchInterstitialAd();
-            }
-            else {
-                console.log("Ad unavailable: not recognized as mobile device");
-            }
-        });
+        // this.platform.ready().then(() => {
+        //     if(this.platform.is('mobile')){
+        //         this.launchInterstitialAd();
+        //     }
+        //     else {
+        //         console.log("Ad unavailable: not recognized as mobile device");
+        //     }
+        // });
 
         this.navCtrl.push(FinalPage, { guardianAngel: this.finalImage });
     }

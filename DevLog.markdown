@@ -17,6 +17,8 @@ Winter-Spring 2018
 ##### A) Prepared for Apple App store
 
 - Using local images for iOS as opposed to Firebase
+- Open interstitial in FinalPage ionViewDidEnter()
+	- as opposed to ConfirmPage confirmSelection()
 
 ## **==================================================**
 ## **====== 06/13/18 = Brendan Thompson ======**
