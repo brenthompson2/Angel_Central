@@ -1,7 +1,7 @@
 /*
   	File: final.ts
   	Updated: 02/08/18 by Brendan Thompson
-    Updated: 05/08/18 by Brendan Thompson
+    Updated: 06/14/18 by Brendan Thompson
 
   	Summary: Final page after sending Guardian Angel
 */

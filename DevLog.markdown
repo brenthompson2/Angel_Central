@@ -11,13 +11,13 @@ Winter-Spring 2018
 
 ### Summary:
 	A) Using local images for iOS as opposed to Firebase
-	B) Fixed interstitial on iOS
+	B) Tried fixing interstitial on iOS
 
 ### Log of activity
 
 ##### A) Using local images for iOS as opposed to Firebase
 
-##### B) Fixed interstitial on iOS
+##### B) Tried fixing interstitial on iOS
 
 - Open interstitial in FinalPage ionViewDidEnter()
 	- as opposed to ConfirmPage confirmSelection()
@@ -28,7 +28,7 @@ Winter-Spring 2018
 	- didn't fix
 
 - Still saying "attempt to present GADInterstitialViewController on MainViewController which is already presenting UIActivityViewController"
-	- testing without trying to share also...
+	- Can only either share or interstitial, not both at the same time
 
 ## **==================================================**
 ## **====== 06/13/18 = Brendan Thompson ======**

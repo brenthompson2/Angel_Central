@@ -1,7 +1,7 @@
 /*
   	File: confirm.ts
   	Updated: 02/08/18 by Brendan Thompson
-    Updated: 05/08/18 by Brendan Thompson
+    Updated: 06/14/18 by Brendan Thompson
 
   	Summary: Page for confirming and sending the Guardian Angel
 */
@@ -87,7 +87,7 @@ export class ConfirmPage {
 
     // Function called by the Submit Button
     confirmSelection(){
-        // this.shareManually();
+        this.shareManually();
 
         // Show Interstitial Ad
         this.platform.ready().then(() => {
