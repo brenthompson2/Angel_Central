@@ -26,13 +26,21 @@ export class HomePage {
 
 		this.nativeAudio.preloadComplex('bckgrndMusic', '../../assets/Angel_Central.wav', 1, 1, 0).then(
 			function(msg){
-				console.info(msg) // load succeeded
-				this.nativeAudio.loop('bckgrndMusic');
+				console.log(msg); // load succeeded
             },
-			function(msg){
-				console.info(msg) // load failed
+			function(error){
+				console.error(error); // load failed
 			}
 		);
+
+		this.nativeAudio.loop('bckgrndMusic').then(
+			function(msg){
+				console.log(msg); // audio looped
+            },
+			function(error){
+				console.error(error); // loop failed
+			}
+		);;
 
 
 		initializeApp(FIREBASE_CONFIG); // Initialize app w/ firebase
