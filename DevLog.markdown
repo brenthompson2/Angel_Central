@@ -6,6 +6,19 @@ Winter-Spring 2018
 ==================================================================================
 
 ## **==================================================**
+## **====== 06/20/18 = Lee Morrow ======**
+## **==================================================**
+
+### Summary:
+	A) Added background music to app
+
+### Log of activity
+
+##### A) Moved loop function outside of then statement and added additional error checks. 
+
+- Need to run with "ionic cordova run browswer" to use applicable plugins in browser, such as Native Audio. 
+
+## **==================================================**
 ## **====== 06/14/18 = Brendan Thompson ======**
 ## **==================================================**
 
@@ -68,6 +81,8 @@ Winter-Spring 2018
 ##### C) Added link to iTunes
 
 ## **==================================================**
+=======
+>>>>>>> bckgrndMusic
 ## **====== 06/01/18 = Brendan Thompson ======**
 ## **==================================================**
 
@@ -98,6 +113,7 @@ Winter-Spring 2018
 
 ##### A) Only pulls images if on mobile & online
 
+- didn't work to load locally on Ionic View
 - `if (navigator.onLine && this.platform.is('mobile')){`
 
 

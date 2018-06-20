@@ -9,6 +9,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpModule } from '@angular/http';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { AdMobFree } from '@ionic-native/admob-free';
+import { NativeAudio } from '@ionic-native/native-audio';
 
 // Pages
 import { HomePage } from '../pages/home/home';
@@ -54,7 +55,8 @@ import { TextListProvider } from '../providers/text-list/text-list';
     SocialSharing,
     PictureListProvider,
     TextListProvider,
-    AdMobFree
+    AdMobFree,
+    NativeAudio
   ]
 })
 export class AppModule {}
