@@ -24,24 +24,22 @@ export class HomePage {
 	constructor(public navCtrl: NavController,
 				private nativeAudio: NativeAudio) {
 
-		this.nativeAudio.preloadComplex('bckgrndMusic', '../../assets/Angel_Central.wav', 1, 1, 0).then(
-			function(msg){
-				console.log(msg); // load succeeded
-            },
-			function(error){
-				console.error(error); // load failed
-			}
-		);
-
-		this.nativeAudio.loop('bckgrndMusic').then(
-			function(msg){
-				console.log(msg); // audio looped
-            },
-			function(error){
-				console.error(error); // loop failed
-			}
-		);;
-
+		// this.nativeAudio.preloadComplex('bckgrndMusic', 'assets/Angel_Central.wav', 1, 1, 0).then(
+		// 	function(msg){
+		// 		console.log(msg); // load succeeded
+		// 		this.nativeAudio.loop('bckgrndMusic').then(
+		// 			function(msg){
+		// 				console.log(msg); // audio looped
+		//             },
+		// 			function(error){
+		// 				console.error(error); // loop failed
+		// 			}
+		// 		);;
+		//     },
+		// 	function(error){
+		// 		console.error(error); // load failed
+		// 	}
+		// );
 
 		initializeApp(FIREBASE_CONFIG); // Initialize app w/ firebase
 	}

@@ -10,7 +10,8 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 // My Imports
-// import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { SocialSharing } from '@ionic-native/social-sharing';
 import { AdMobFree, AdMobFreeBannerConfig, AdMobFreeInterstitialConfig } from '@ionic-native/admob-free';
 import { Platform } from 'ionic-angular';
 
@@ -22,7 +23,7 @@ import { Platform } from 'ionic-angular';
   	selector: 'page-final',
   	templateUrl: 'final.html',
 })
-export class FinalPage {
+export class FinalPage{
 
     // =========================================
     // Member Vars
@@ -45,29 +46,35 @@ export class FinalPage {
   	constructor(public navCtrl: NavController,
                 public navParams: NavParams,
                 private platform: Platform,
-                private admobFree: AdMobFree) {
+                private admobFree: AdMobFree,
+                public sharing: SocialSharing, 
+                private IABrowser: InAppBrowser, 
+                ) {
 
   		this.finalImage = this.navParams.get('guardianAngel');
   	}
 
+    ionViewWillEnter(){
+        this.shareManually();
+    }
+
     ionViewDidEnter(){
-        // Show Banner Ad
-        this.platform.ready().then(() => {
-            if(this.platform.is('mobile')){
-                if (this.platform.is('Android')){
-                    this.bannerAdUnitID = this.bannerAdUnitID_Android;
-                    this.interstitialAdUnitID = this.interstitialAdUnitID_Android;
-                }
-                else {
-                    this.bannerAdUnitID = this.bannerAdUnitID_iOS;
-                    this.interstitialAdUnitID = this.interstitialAdUnitID_iOS;
-                }
-                this.showBannerAd();
-                // this.launchInterstitialAd();
+        if(this.platform.is('mobile')){
+            if (this.platform.is('Android')){
+                this.bannerAdUnitID = this.bannerAdUnitID_Android;
+                this.interstitialAdUnitID = this.interstitialAdUnitID_Android;
             }
             else {
-                console.log("Ad unavailable: not recognized as mobile device");
+                this.bannerAdUnitID = this.bannerAdUnitID_iOS;
+                this.interstitialAdUnitID = this.interstitialAdUnitID_iOS;
             }
+        }
+        else {
+            console.log("Ad unavailable: not recognized as mobile device");
+        }
+        // Show Banner Ad
+        this.platform.ready().then(() => {
+            this.showBannerAd();
         });
     }
 
@@ -78,6 +85,16 @@ export class FinalPage {
                 this.admobFree.banner.hide();
             }
         });
+    }
+
+    shareManually(){
+        this.sharing.share("I am sending you this Guardian Angel ", "Guardian Angel", this.finalImage, null)
+            .then(() => {
+                console.log("Sent Guardian Angel");
+            })
+            .catch((error) =>{
+                console.log(error);
+            });
     }
 
     // =========================================
@@ -93,9 +110,10 @@ export class FinalPage {
         this.navCtrl.pop();
     }
 
-    // buyAlbum(){
-        // const browser = this.IABrowser.create('itms-apps://itunes.apple.com/us/app/pages/id333903271?mt=8', '_system', 'location=yes');
-    // }
+    buyAlbum(){
+        console.log("Album button clicked");
+        const browser = this.IABrowser.create('itms-apps://itunes.apple.com/us/app/pages/id333903271?mt=8');
+    }
 
     // =========================================
     // Advertisements

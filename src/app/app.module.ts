@@ -7,6 +7,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 // My Imports
 import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { AdMobFree } from '@ionic-native/admob-free';
 import { NativeAudio } from '@ionic-native/native-audio';
@@ -22,6 +23,9 @@ import { FinalPage } from '../pages/final/final';
 // Providers
 import { PictureListProvider } from '../providers/picture-list/picture-list';
 import { TextListProvider } from '../providers/text-list/text-list';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
+
+
 
 @NgModule({
   declarations: [
@@ -36,6 +40,7 @@ import { TextListProvider } from '../providers/text-list/text-list';
   imports: [
     BrowserModule,
     HttpModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -56,7 +61,8 @@ import { TextListProvider } from '../providers/text-list/text-list';
     PictureListProvider,
     TextListProvider,
     AdMobFree,
-    NativeAudio
+    NativeAudio, 
+    InAppBrowser
   ]
 })
 export class AppModule {}

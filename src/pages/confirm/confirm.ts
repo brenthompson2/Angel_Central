@@ -6,11 +6,10 @@
   	Summary: Page for confirming and sending the Guardian Angel
 */
 
-import { Component } from '@angular/core';
+import { Component, Renderer } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 // My Imports
-import { SocialSharing } from '@ionic-native/social-sharing';
 import { AdMobFree, AdMobFreeBannerConfig, AdMobFreeInterstitialConfig } from '@ionic-native/admob-free';
 import { Platform } from 'ionic-angular';
 
@@ -28,6 +27,7 @@ export class ConfirmPage {
     // =========================================
     // Member Vars
     // =========================================
+
     private finalImage: any;
 
     // Admob
@@ -39,17 +39,29 @@ export class ConfirmPage {
     private interstitialAdUnitID_Android = 'ca-app-pub-9786610691421616/5234570140'; // sent-angel-interstitial-android
     private interstitialAdUnitID_iOS = 'ca-app-pub-9786610691421616/4334629431'; // sent-angel-interstitial-ios
 
+    private options = {
+        message: 'I am sending you this Guardian Angel ', // not supported on some apps (Facebook, Instagram)
+        subject: 'Guardian Angel', // fi. for email
+        files: [this.finalImage], // an array of filenames either locally or remotely
+    };
+
     // =========================================
     // Constructor & Lifecycle events
     // =========================================
 
   	constructor(public navCtrl: NavController,
                 public navParams: NavParams,
-                public sharing: SocialSharing,
                 private platform: Platform,
-                public admobFree: AdMobFree) {
+                public admobFree: AdMobFree,
+                public renderer: Renderer) {
 
 		this.finalImage = this.navParams.get('guardianAngel');
+
+        renderer.listenGlobal('document', 'admob.interstitial.events.CLOSE', (event) => {
+                console.log(event);
+                this.navCtrl.push(FinalPage, { guardianAngel: this.finalImage });
+
+        });
   	}
 
     ionViewDidEnter(){
@@ -87,8 +99,6 @@ export class ConfirmPage {
 
     // Function called by the Submit Button
     confirmSelection(){
-        this.shareManually();
-
         // Show Interstitial Ad
         this.platform.ready().then(() => {
             if(this.platform.is('mobile')){
@@ -98,68 +108,7 @@ export class ConfirmPage {
                 console.log("Ad unavailable: not recognized as mobile device");
             }
         });
-
-        this.navCtrl.push(FinalPage, { guardianAngel: this.finalImage });
     }
-
-    // =========================================
-    // Functions for Sharing
-    // =========================================
-
-    // Brings up the default sharing menu for the device
-    shareManually(){
-        this.sharing.share("I am sending you this Guardian Angel ", "Guardian Angel", this.finalImage, null)
-            .then(() => {
-                console.log("Sent Guardian Angel");
-            })
-            .catch((error) =>{
-                console.log(error);
-            });
-    }
-
-    shareToFacebook(){
-        this.sharing.shareViaFacebookWithPasteMessageHint("I am sending you this Guardian Angel ", this.finalImage, null)
-            .then(() => {
-                console.log("Sent Via Facebook");
-
-            })
-            .catch((error) =>{
-                console.log(error);
-            });
-    }
-
-    shareToInstagram(){
-        this.sharing.shareViaInstagram("I am sending you this Guardian Angel ", this.finalImage)
-            .then(() => {
-                console.log("Sent Via Instagram");
-
-            })
-            .catch((error) =>{
-                console.log(error);
-            });
-    }
-
-    shareToTwitter(){
-        this.sharing.shareViaTwitter("I am sending you this Guardian Angel ", this.finalImage, null)
-            .then(() => {
-                console.log("Sent Via Twitter");
-
-            })
-            .catch((error) =>{
-                console.log(error);
-            });
-    }
-
-    // shareToEmail(){
-    //     this.sharing.shareViaEmail("I am sending you this Guardian Angel ", "Guardian Angel", "brenthompson2@gmail.com", null, null, null)
-    //         .then(() => {
-    //             console.log("Sent Via Email");
-
-    //         })
-    //         .catch((error) =>{
-    //             console.log(error);
-    //         });
-    // }
 
     // =========================================
     // Advertisements
