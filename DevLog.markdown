@@ -6,6 +6,25 @@ Winter-Spring 2018
 ==================================================================================
 
 ## **==================================================**
+## **====== 06/29/18 = Lee Morrow ======**
+## **==================================================**
+
+### Summary:
+	A) Fixed interstital ad problems on ios
+	B) Uncovered bugs in background music and in page stack
+	C) Added itunes button and got InAppBrowser working
+
+### Log of activity
+
+##### A) Used listener in confirm page to move to next page when interstital ad is closed. Runs social-sharing on page load
+
+##### B) Background music does not work in app, page stack adds extra pages when clicking the back button after navigating backwards with other buttons
+
+##### C) Links work, but this button needs to be configured to open itunes, unsure of functionality if itunes is not installed
+
+- Need to run with "ionic cordova run browswer" to use applicable plugins in browser, such as Native Audio. 
+
+## **==================================================**
 ## **====== 06/20/18 = Lee Morrow ======**
 ## **==================================================**
 
@@ -14,7 +33,7 @@ Winter-Spring 2018
 
 ### Log of activity
 
-##### A) Moved loop function outside of then statement and added additional error checks. 
+##### A) Moved loop function outside of then statement and added additional error checks
 
 - Need to run with "ionic cordova run browswer" to use applicable plugins in browser, such as Native Audio. 
 
