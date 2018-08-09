@@ -1,9 +1,9 @@
 /*
-  	File: confirm.ts
-  	Updated: 02/08/18 by Brendan Thompson
+      File: confirm.ts
+      Updated: 02/08/18 by Brendan Thompson
     Updated: 06/14/18 by Brendan Thompson
 
-  	Summary: Page for confirming and sending the Guardian Angel
+      Summary: Page for confirming and sending the Guardian Angel
 */
 
 import { Component, Renderer } from '@angular/core';
@@ -19,8 +19,8 @@ import { FinalPage } from '../final/final';
 // Providers
 
 @Component({
-  	selector: 'page-confirm',
-  	templateUrl: 'confirm.html',
+      selector: 'page-confirm',
+      templateUrl: 'confirm.html',
 })
 export class ConfirmPage {
 
@@ -49,20 +49,20 @@ export class ConfirmPage {
     // Constructor & Lifecycle events
     // =========================================
 
-  	constructor(public navCtrl: NavController,
+      constructor(public navCtrl: NavController,
                 public navParams: NavParams,
                 private platform: Platform,
                 public admobFree: AdMobFree,
                 public renderer: Renderer) {
 
-		this.finalImage = this.navParams.get('guardianAngel');
+        this.finalImage = this.navParams.get('guardianAngel');
 
         renderer.listenGlobal('document', 'admob.interstitial.events.CLOSE', (event) => {
                 console.log(event);
                 this.navCtrl.push(FinalPage, { guardianAngel: this.finalImage });
 
         });
-  	}
+      }
 
     ionViewDidEnter(){
         // Show Banner Ad
