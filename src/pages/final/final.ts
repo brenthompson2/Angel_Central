@@ -111,9 +111,7 @@ export class FinalPage{
     }
 
     buyAlbum(){
-        console.log("Album button clicked");
-        const browser = this.IABrowser.create('itms-apps://itunes.apple.com/us/app/pages/id333903271?mt=8');
-    }
+        const browser = this.IABrowser.create("https://itunes.apple.com/album/id1357521536?ls=1&app=itunes", "_system", "location=yes");    }
 
     // =========================================
     // Advertisements

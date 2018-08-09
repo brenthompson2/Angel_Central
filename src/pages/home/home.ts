@@ -11,6 +11,8 @@ import { NavController } from 'ionic-angular';
 import { initializeApp } from 'firebase';
 import { FIREBASE_CONFIG } from "../../app/firebase.config";
 import { NativeAudio } from '@ionic-native/native-audio';
+import { Platform } from 'ionic-angular';
+import { StatusBar } from '@ionic-native/status-bar';
 
 // Pages
 import { CategorySelectPage } from '../category-select/category-select';
@@ -21,25 +23,19 @@ import { CategorySelectPage } from '../category-select/category-select';
 })
 export class HomePage {
 
-	constructor(public navCtrl: NavController,
-				private nativeAudio: NativeAudio) {
+	constructor(public navCtrl: NavController, private nativeAudio: NativeAudio, public platform: Platform, public statusBar: StatusBar) {
 
-		// this.nativeAudio.preloadComplex('bckgrndMusic', 'assets/Angel_Central.wav', 1, 1, 0).then(
-		// 	function(msg){
-		// 		console.log(msg); // load succeeded
-		// 		this.nativeAudio.loop('bckgrndMusic').then(
-		// 			function(msg){
-		// 				console.log(msg); // audio looped
-		//             },
-		// 			function(error){
-		// 				console.error(error); // loop failed
-		// 			}
-		// 		);;
-		//     },
-		// 	function(error){
-		// 		console.error(error); // load failed
-		// 	}
-		// );
+		platform.ready().then(() => {
+            statusBar.styleDefault();
+            if (platform.is('android')) {
+                statusBar.overlaysWebView(false);
+                statusBar.backgroundColorByHexString('#000000');
+            }
+        });
+
+		var background_music = new Audio("assets/Angel_Central.wav");
+		background_music.play();
+		background_music.loop = true;
 
 		initializeApp(FIREBASE_CONFIG); // Initialize app w/ firebase
 	}
