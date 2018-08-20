@@ -100,7 +100,7 @@ export class FinalPage{
     }
 
     shareManually(){
-        this.sharing.share("I am sending you this Guardian Angel ", "Guardian Angel", this.finalImage, null)
+        this.sharing.share("Sent with the angel central app ", "Guardian Angel", this.finalImage, null)
             .then(() => {
                 console.log("Sent Guardian Angel");
             })
