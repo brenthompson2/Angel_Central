@@ -8,6 +8,7 @@
 
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { ViewController } from 'ionic-angular';
 
 // My Imports
 import { InAppBrowser } from '@ionic-native/in-app-browser';
@@ -39,6 +40,8 @@ export class FinalPage{
     private interstitialAdUnitID_Android = 'ca-app-pub-9786610691421616/5234570140'; // sent-angel-interstitial-android
     private interstitialAdUnitID_iOS = 'ca-app-pub-9786610691421616/4334629431'; // sent-angel-interstitial-ios
 
+    public unregisterBackButtonAction: any;
+
     // =========================================
     // Constructor & Lifecycle events
     // =========================================
@@ -48,14 +51,16 @@ export class FinalPage{
                 private platform: Platform,
                 private admobFree: AdMobFree,
                 public sharing: SocialSharing, 
-                private IABrowser: InAppBrowser, 
-                ) {
+                private IABrowser: InAppBrowser,
+                public viewCtrl: ViewController){
 
   		this.finalImage = this.navParams.get('guardianAngel');
   	}
 
     ionViewWillEnter(){
         this.shareManually();
+        this.viewCtrl.showBackButton(false);
+        this.initializeBackButtonCustomHandler();
     }
 
     ionViewDidEnter(){
@@ -85,6 +90,13 @@ export class FinalPage{
                 this.admobFree.banner.hide();
             }
         });
+        this.unregisterBackButtonAction && this.unregisterBackButtonAction();
+    }
+
+    initializeBackButtonCustomHandler(): void {
+        this.unregisterBackButtonAction = this.platform.registerBackButtonAction(function(event){
+            console.log('Prevent Back Button Page Change');
+        }, 101);
     }
 
     shareManually(){

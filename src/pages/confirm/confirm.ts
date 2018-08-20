@@ -8,6 +8,7 @@
 
 import { Component, Renderer } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { ViewController } from 'ionic-angular';
 
 // My Imports
 import { AdMobFree, AdMobFreeBannerConfig, AdMobFreeInterstitialConfig } from '@ionic-native/admob-free';
@@ -45,6 +46,8 @@ export class ConfirmPage {
         files: [this.finalImage], // an array of filenames either locally or remotely
     };
 
+    public unregisterBackButtonAction: any;
+
     // =========================================
     // Constructor & Lifecycle events
     // =========================================
@@ -53,7 +56,8 @@ export class ConfirmPage {
                 public navParams: NavParams,
                 private platform: Platform,
                 public admobFree: AdMobFree,
-                public renderer: Renderer) {
+                public renderer: Renderer,
+                public viewCtrl: ViewController) {
 
         this.finalImage = this.navParams.get('guardianAngel');
 
@@ -63,6 +67,10 @@ export class ConfirmPage {
 
         });
       }
+
+    ionViewWillEnter(){
+        this.viewCtrl.showBackButton(false);
+    }
 
     ionViewDidEnter(){
         // Show Banner Ad
@@ -82,6 +90,8 @@ export class ConfirmPage {
                 console.log("Ad unavailable: not recognized as mobile device");
             }
         });
+
+        this.initializeBackButtonCustomHandler();
     }
 
     ionViewWillLeave(){
@@ -91,6 +101,14 @@ export class ConfirmPage {
                 this.admobFree.banner.hide();
             }
         });
+
+        this.unregisterBackButtonAction && this.unregisterBackButtonAction();
+    }
+
+    initializeBackButtonCustomHandler(): void {
+        this.unregisterBackButtonAction = this.platform.registerBackButtonAction(function(event){
+            console.log('Prevent Back Button Page Change');
+        }, 101);
     }
 
     // =========================================
